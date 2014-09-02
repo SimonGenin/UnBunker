@@ -16,7 +16,6 @@ public class LoginActivity extends Activity {
     private EditText nicknameEDT;
     private EditText nameEDT;
     private  EditText passwordEDT;
-    private Button loginButton;
 
 
     @Override
@@ -28,7 +27,7 @@ public class LoginActivity extends Activity {
         nicknameEDT = (EditText) findViewById(R.id.nickname_edt);
         nameEDT = (EditText) findViewById(R.id.name_edt);
         passwordEDT = (EditText) findViewById(R.id.mdp_edt);
-        loginButton = (Button) findViewById(R.id.login_button);
+        Button loginButton = (Button) findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
