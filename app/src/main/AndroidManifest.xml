@@ -6,7 +6,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:name=".UnBunkerApplication"
+        >
         <activity
             android:name=".MenuActivity"
             android:label="@string/app_name" >
@@ -16,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".LoginActivity" android:label="Connexion">
+
+        </activity>
+
     </application>
 
 </manifest>

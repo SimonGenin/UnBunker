@@ -1,6 +1,7 @@
 package be.simongenin.unbunker;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,8 +14,18 @@ public class MenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        redirectToLoginIfNeeded();
 
+    }
 
+    private void redirectToLoginIfNeeded() {
+        // Si pas connecté, renvoi vers la page de connexion
+        if (!UnBunkerApplication.user.isConnected()) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
     }
 
 
