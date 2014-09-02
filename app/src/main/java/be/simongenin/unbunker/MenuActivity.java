@@ -14,12 +14,17 @@ public class MenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        // Si pas connecté, renvoi vers la page de connexion
         redirectToLoginIfNeeded();
+
 
     }
 
+    /*
+        Permet de renvoyer vers la page de connection si
+        l'utilisateur n'est pas connecté
+     */
     private void redirectToLoginIfNeeded() {
-        // Si pas connecté, renvoi vers la page de connexion
         if (!UnBunkerApplication.user.isConnected()) {
             Intent intent = new Intent(this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -1,17 +1,94 @@
 package be.simongenin.unbunker;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 
 public class LoginActivity extends Activity {
+
+    private EditText nicknameEDT;
+    private EditText nameEDT;
+    private  EditText passwordEDT;
+    private Button loginButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // init
+        nicknameEDT = (EditText) findViewById(R.id.nickname_edt);
+        nameEDT = (EditText) findViewById(R.id.name_edt);
+        passwordEDT = (EditText) findViewById(R.id.mdp_edt);
+        loginButton = (Button) findViewById(R.id.login_button);
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Recupere les données
+                String nickname = nicknameEDT.getText().toString().trim();
+                String name = nameEDT.getText().toString().trim();
+                String password = passwordEDT.getText().toString().trim();
+
+                // check si les champs ne sont pas vides
+                if (checkFields(nickname, name, password)) {
+                    // check la bd si il existe
+                    if (checkConnection(nickname, name, password)) {
+
+                        // TODO change data given to user be the ones into the DB
+                        UnBunkerApplication.user.setName(name);
+                        UnBunkerApplication.user.setNickname(nickname);
+
+                        UnBunkerApplication.user.connect();
+
+                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+
+                }
+
+            }
+        });
+
+    }
+
+    private boolean checkConnection(String nkn, String n, String p) {
+        // TODO check connection + error dialog
+        return true;
+
+    }
+
+    /*
+        Check si des champs sont vides
+     */
+    private boolean checkFields(String nkn, String n, String p) {
+
+        if (nkn.isEmpty() || n.isEmpty() || p.isEmpty()) {
+            showDialogEmptyFields();
+            return false;
+        }
+
+        return true;
+    }
+
+    private void showDialogEmptyFields() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Impossible de se connecter");
+        builder.setMessage("Tous les champs doivent être remplis.");
+        builder.setPositiveButton(android.R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 
