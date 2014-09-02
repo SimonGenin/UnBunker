@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MenuActivity extends Activity {
@@ -17,6 +19,18 @@ public class MenuActivity extends Activity {
         // Si pas connecté, renvoi vers la page de connexion
         redirectToLoginIfNeeded();
 
+        // Deconnection
+        Button disconnectButton = (Button) findViewById(R.id.disconnect_button);
+        disconnectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UnBunkerApplication.user.disconnect();
+                Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
 
 
     }
