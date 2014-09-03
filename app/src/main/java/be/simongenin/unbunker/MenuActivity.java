@@ -20,6 +20,7 @@ public class MenuActivity extends Activity {
         redirectToLoginIfNeeded();
 
         // Deconnection
+        // TODO mettre dans un menu
         Button disconnectButton = (Button) findViewById(R.id.disconnect_button);
         disconnectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,11 +33,26 @@ public class MenuActivity extends Activity {
             }
         });
 
+        //String test = DataBase.retrievingPresales();
+        //Log.i("MenuActivity", test);
+
+        Button buyPresaleButton = (Button) findViewById(R.id.buy_presale_button);
+        buyPresaleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Presale.getAllPresales();
+
+            }
+        });
+
+
+
 
     }
 
     /*
-        Permet de renvoyer vers la page de connection si
+        Permet de renvoyer vers la page de connection sia
         l'utilisateur n'est pas connecté
      */
     private void redirectToLoginIfNeeded() {
