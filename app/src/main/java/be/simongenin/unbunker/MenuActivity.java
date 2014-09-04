@@ -59,7 +59,8 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Bunker.fillBunkersListFromDataBase();
-                textTest.setText(Bunker.bunkers.get(0).toString());
+                Intent intent = new Intent(MenuActivity.this, BunkersActivity.class);
+                startActivity(intent);
             }
         });
 
