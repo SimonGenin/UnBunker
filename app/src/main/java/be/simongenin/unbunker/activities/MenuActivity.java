@@ -1,4 +1,4 @@
-package be.simongenin.unbunker;
+package be.simongenin.unbunker.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+
+import be.simongenin.unbunker.classes.Bunker;
+import be.simongenin.unbunker.classes.Presale;
+import be.simongenin.unbunker.R;
+import be.simongenin.unbunker.UnBunkerApplication;
 
 
 public class MenuActivity extends Activity {

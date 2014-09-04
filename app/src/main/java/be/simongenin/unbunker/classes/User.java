@@ -1,4 +1,4 @@
-package be.simongenin.unbunker;
+package be.simongenin.unbunker.classes;
 
 
 public class User {

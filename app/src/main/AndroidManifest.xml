@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MenuActivity"
+            android:name=".activities.MenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +20,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:label="Connexion" >
         </activity>
         <activity
-            android:name=".BunkersActivity"
+            android:name=".activities.BunkersActivity"
             android:label="@string/title_activity_bunkers"
-            android:parentActivityName=".MenuActivity" >
+            android:parentActivityName=".activities.MenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="be.simongenin.unbunker.MenuActivity" />

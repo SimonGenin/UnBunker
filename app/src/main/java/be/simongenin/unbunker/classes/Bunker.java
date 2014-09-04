@@ -1,4 +1,4 @@
-package be.simongenin.unbunker;
+package be.simongenin.unbunker.classes;
 
 import android.util.Log;
 
@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import be.simongenin.unbunker.DataBase;
 
 public class Bunker {
 

@@ -1,4 +1,4 @@
-package be.simongenin.unbunker;
+package be.simongenin.unbunker.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,6 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import be.simongenin.unbunker.R;
+import be.simongenin.unbunker.UnBunkerApplication;
 
 
 public class LoginActivity extends Activity {

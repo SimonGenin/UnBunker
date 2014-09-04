@@ -1,4 +1,4 @@
-package be.simongenin.unbunker;
+package be.simongenin.unbunker.activities;
 
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import be.simongenin.unbunker.classes.Bunker;
+import be.simongenin.unbunker.R;
 
 
 public class BunkersActivity extends ListActivity {
