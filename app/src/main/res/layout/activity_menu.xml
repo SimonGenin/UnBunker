@@ -35,14 +35,23 @@
         android:layout_below="@+id/buy_presale_button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp"/>
+        android:layout_marginTop="30dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bunkers"
+        android:id="@+id/bunkers_button"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Se déconnecter"
         android:id="@+id/disconnect_button"
-        android:layout_below="@+id/button2"
+        android:layout_below="@+id/bunkers_button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"/>
@@ -56,5 +65,7 @@
         android:layout_below="@+id/disconnect_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"/>
+
+
 
 </RelativeLayout>

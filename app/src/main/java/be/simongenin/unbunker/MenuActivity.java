@@ -19,6 +19,9 @@ public class MenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        // TEST
+        final TextView textTest = (TextView) findViewById(R.id.textText);
+
         // Si pas connecté, renvoi vers la page de connexion
         redirectToLoginIfNeeded();
 
@@ -36,21 +39,31 @@ public class MenuActivity extends Activity {
             }
         });
 
-        //String test = DataBase.retrievingPresales();
-        //Log.i("MenuActivity", test);
 
-        final TextView testText = (TextView) findViewById(R.id.textText);
-
+        /*
+            Acheter des preventes
+         */
         Button buyPresaleButton = (Button) findViewById(R.id.buy_presale_button);
         buyPresaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Presale.fillPresalesListFromDataBase();
-                testText.setText(Presale.presales.get(3).toString());
-
             }
         });
+
+        /*
+            Voir la liste des bunkers
+         */
+        Button bunkersButton = (Button) findViewById(R.id.bunkers_button);
+        bunkersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bunker.fillBunkersListFromDataBase();
+                textTest.setText(Bunker.bunkers.get(0).toString());
+            }
+        });
+
+
 
 
 

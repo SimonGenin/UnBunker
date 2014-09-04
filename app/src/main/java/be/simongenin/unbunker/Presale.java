@@ -16,6 +16,7 @@ public class Presale {
     private int bunker_id;
     private int nb_total;
     private int nb_vendu;
+    // Format date : YYYY-MM-DD HH:MM:SS
     private String date_post;
 
     public Presale(int id, int compte_id, int bunker_id, int nb_total, int nb_vendu, String date_post) {
@@ -59,9 +60,6 @@ public class Presale {
 
                 for (int i = 0 ; i < jsr.length() ; i++) {
 
-                    // On met un prevente par tableau sous forme :
-                    // [ IdPre, Id_Compte, Id_Bunker, Nb_Total, Nb_Vendu, Date_Post ]
-                    // Format date : YYYY-MM-DD HH:MM:SS
                     JSONObject pre = jsr.getJSONObject(i);
 
                     presales.add(
@@ -78,6 +76,7 @@ public class Presale {
         }
 
     }
+
 
     @Override
     public String toString() {
@@ -136,4 +135,5 @@ public class Presale {
     public void setDate_post(String date_post) {
         this.date_post = date_post;
     }
+
 }
