@@ -26,8 +26,27 @@ public class Presale {
         this.nb_vendu = nb_vendu;
         this.date_post = date_post;    }
 
+    public static void fillPresalesListFromDataBase() {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                JSONArray presalesJSON = DataBase.getData("getAllPresales");
+                Presale.fillPresales(presalesJSON);
+            }
 
-    public static void fillPresales(JSONArray jsr) {
+        });
+
+        t.start();
+
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private static void fillPresales(JSONArray jsr) {
 
         if (jsr == null) {
            Log.e("HTTP", "Pas de données!");

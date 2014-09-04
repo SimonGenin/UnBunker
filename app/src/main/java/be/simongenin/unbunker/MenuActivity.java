@@ -10,8 +10,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-
 
 public class MenuActivity extends Activity {
 
@@ -48,25 +46,7 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        JSONArray presalesJSON = DataBase.getData("getAllPresales");
-                        Presale.fillPresales(presalesJSON);
-                    }
-
-                });
-
-                t.start();
-                setProgressBarIndeterminateVisibility(true);
-
-                try {
-                    t.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                setProgressBarIndeterminateVisibility(false);
-
+                Presale.fillPresalesListFromDataBase();
                 testText.setText(Presale.presales.get(3).toString());
 
             }
@@ -76,6 +56,8 @@ public class MenuActivity extends Activity {
 
 
     }
+
+
 
     /*
         Permet de renvoyer vers la page de connection sia
