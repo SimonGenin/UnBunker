@@ -11,7 +11,7 @@ import be.simongenin.unbunker.DataBase;
 
 public class Presale {
 
-    static ArrayList<Presale> presales = new ArrayList<Presale>();
+    public static ArrayList<Presale> presales = new ArrayList<Presale>();
 
     private int id;
     private int compte_id;
@@ -27,7 +27,37 @@ public class Presale {
         this.bunker_id = bunker_id;
         this.nb_total = nb_total;
         this.nb_vendu = nb_vendu;
-        this.date_post = date_post;    }
+        this.date_post = date_post;
+    }
+
+    public int getPresaleLeftNumber() {
+        return this.nb_total - this.nb_vendu;
+    }
+
+    public static String getUserNameByd(int id) {
+
+        for (User user : User.users) {
+
+            if (id == user.getId()) {
+                StringBuilder sb = new StringBuilder();
+
+                if (user.getNickname() != null && !user.getNickname().isEmpty() && !user.getNickname().equals("null")) {
+                    sb.append(user.getNickname() + " ");
+                }
+
+                if (user.getName() != null && !user.getName().isEmpty() && !user.getName().equals("null")) {
+                    sb.append(user.getName());
+                }
+
+                return new String(sb);
+            }
+
+        }
+
+        return null;
+    }
+
+
 
     public static void fillPresalesListFromDataBase() {
         Thread t = new Thread(new Runnable() {

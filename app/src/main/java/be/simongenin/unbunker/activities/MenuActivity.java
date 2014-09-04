@@ -14,6 +14,7 @@ import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.UnBunkerApplication;
 import be.simongenin.unbunker.classes.Bunker;
 import be.simongenin.unbunker.classes.Presale;
+import be.simongenin.unbunker.classes.User;
 
 
 public class MenuActivity extends Activity {
@@ -53,6 +54,9 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Presale.fillPresalesListFromDataBase();
+                User.fillUsersListFromDataBase();
+                Intent intent = new Intent(MenuActivity.this, BuyPresaleActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -68,9 +72,6 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-
-
 
     }
 

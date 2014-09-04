@@ -31,6 +31,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="be.simongenin.unbunker.MenuActivity" />
         </activity>
+        <activity
+            android:name=".activities.BuyPresaleActivity"
+            android:label="@string/title_activity_buy_presale"
+            android:parentActivityName=".activities.MenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.MenuActivity" />
+        </activity>
     </application>
 
 </manifest>

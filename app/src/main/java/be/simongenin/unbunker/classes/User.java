@@ -130,4 +130,36 @@ public class User {
     public void setGsm(String gsm) {
         this.gsm = gsm;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
+    }
 }

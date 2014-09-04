@@ -9,18 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import be.simongenin.unbunker.classes.Bunker;
 import be.simongenin.unbunker.R;
+import be.simongenin.unbunker.classes.Presale;
 
-
-public class BunkersActivity extends ListActivity {
+public class BuyPresaleActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bunkers);
+        setContentView(R.layout.activity_buy_presale);
 
-        ArrayAdapter<Bunker> adapter = new ArrayAdapter<Bunker>(this, android.R.layout.simple_list_item_2, android.R.id.text1, Bunker.bunkers) {
+        ArrayAdapter<Presale> adapter = new ArrayAdapter<Presale>(this, android.R.layout.simple_list_item_2, android.R.id.text1, Presale.presales) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -28,8 +27,8 @@ public class BunkersActivity extends ListActivity {
                 TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                 TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
-                text1.setText(Bunker.bunkers.get(position).getName());
-                text2.setText(Bunker.bunkers.get(position).getDate());
+                text1.setText(Presale.getUserNameByd(Presale.presales.get(position).getCompte_id()));
+                text2.setText(Presale.presales.get(position).getPresaleLeftNumber() + "");
 
                 return view;
             }
@@ -37,14 +36,13 @@ public class BunkersActivity extends ListActivity {
 
         getListView().setAdapter(adapter);
 
-
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.bunkers, menu);
+        getMenuInflater().inflate(R.menu.buy_presale, menu);
         return true;
     }
 
