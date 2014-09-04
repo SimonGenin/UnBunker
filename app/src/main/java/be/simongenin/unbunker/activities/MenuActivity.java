@@ -10,10 +10,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import be.simongenin.unbunker.classes.Bunker;
-import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.UnBunkerApplication;
+import be.simongenin.unbunker.classes.Bunker;
+import be.simongenin.unbunker.classes.Presale;
 
 
 public class MenuActivity extends Activity {
@@ -68,8 +68,6 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-
 
 
 
