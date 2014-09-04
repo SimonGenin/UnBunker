@@ -5,16 +5,10 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class Presale {
 
-    static JSONArray jsr;
     static ArrayList<Presale> presales = new ArrayList<Presale>();
 
     private int id;
@@ -30,50 +24,13 @@ public class Presale {
         this.bunker_id = bunker_id;
         this.nb_total = nb_total;
         this.nb_vendu = nb_vendu;
-        this.date_post = date_post;
-    }
-
-    /*
-            Get all the presales and store them in jsr (JSONOBJECT)
-         */
-    public static void getAllPresales()  {
-
-        int responseCode = -1;
-
-        try {
-            URL feedURL = new URL("http://10.0.3.2/unbunkerandroid/getAllPresales.php");
-            HttpURLConnection connection = (HttpURLConnection) feedURL.openConnection();
-            connection.connect();
-
-            responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-
-                InputStream inputStream = connection.getInputStream();
-                Reader reader = new InputStreamReader(inputStream);
-                int contentLength = connection.getContentLength();
-                char[] charArray = new char[contentLength];
-                reader.read(charArray);
-                String responseData = new String(charArray);
-
-                jsr = new JSONArray(responseData);
-
-            }
-
-        } catch (Exception e) {
-            Log.e("Presales", "Error : " + e.getMessage());
-        }
-
-        handleResponse();
-
-    }
+        this.date_post = date_post;    }
 
 
-
-
-    private static void handleResponse() {
+    public static void fillPresales(JSONArray jsr) {
 
         if (jsr == null) {
-           Log.e("Presales", "Données vides (jsr)");
+           Log.e("HTTP", "Pas de données!");
         } else {
 
             try {
@@ -98,7 +55,6 @@ public class Presale {
             } catch (Exception e) {
                 Log.e("Presales", "Error : " + e.getMessage());
             }
-
 
         }
 

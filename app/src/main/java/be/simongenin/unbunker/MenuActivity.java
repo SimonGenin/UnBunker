@@ -10,6 +10,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+
 
 public class MenuActivity extends Activity {
 
@@ -49,8 +51,10 @@ public class MenuActivity extends Activity {
                 Thread t = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Presale.getAllPresales();
+                        JSONArray presalesJSON = DataBase.getData("getAllPresales");
+                        Presale.fillPresales(presalesJSON);
                     }
+
                 });
 
                 t.start();
@@ -63,7 +67,7 @@ public class MenuActivity extends Activity {
                 }
                 setProgressBarIndeterminateVisibility(false);
 
-                testText.setText(Presale.presales.get(2).toString());
+                testText.setText(Presale.presales.get(3).toString());
 
             }
         });
