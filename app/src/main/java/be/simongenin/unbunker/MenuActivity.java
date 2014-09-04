@@ -6,13 +6,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class MenuActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
@@ -36,12 +39,31 @@ public class MenuActivity extends Activity {
         //String test = DataBase.retrievingPresales();
         //Log.i("MenuActivity", test);
 
+        final TextView testText = (TextView) findViewById(R.id.textText);
+
         Button buyPresaleButton = (Button) findViewById(R.id.buy_presale_button);
         buyPresaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Presale.getAllPresales();
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Presale.getAllPresales();
+                    }
+                });
+
+                t.start();
+                setProgressBarIndeterminateVisibility(true);
+
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setProgressBarIndeterminateVisibility(false);
+
+                testText.setText(Presale.presales.get(2).toString());
 
             }
         });
