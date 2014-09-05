@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bunker Info"
-        android:id="@+id/textView"
+        android:id="@+id/bunker_name_text"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
@@ -23,38 +23,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Combien de préventes voulez vous vendre ?"
-        android:id="@+id/textView2"
+        android:id="@+id/how_many_text"
         android:layout_marginTop="56dp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/bunker_name_text"
         android:layout_centerHorizontal="true"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:id="@+id/presales_seeked_number"
+        android:textSize="45dp"
+        android:layout_marginTop="49dp"
+        android:layout_below="@+id/how_many_text"
+        android:layout_centerHorizontal="true"/>
+
 
     <SeekBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_marginTop="46dp"
-        android:layout_below="@+id/textView3"
+        android:id="@+id/seekBar_presales"
+        android:layout_below="@+id/presales_seeked_number"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vendre"
+        android:id="@+id/sell_button"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
-        android:id="@+id/textView3"
-        android:textSize="45dp"
-        android:layout_marginTop="49dp"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Vendre"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:text="Vendre plus ? Click ici."
+        android:id="@+id/sell_more_text"
+        android:layout_below="@+id/seekBar_presales"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"/>
 
 </RelativeLayout>

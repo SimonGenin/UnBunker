@@ -47,6 +47,18 @@ public class MenuActivity extends Activity {
         });
 
         /*
+            Vendre une prévente
+         */
+        Button sellPresaleButton = (Button) findViewById(R.id.sell_presale_button);
+        sellPresaleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, SellPresaleActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        /*
             Voir la liste des bunkers
          */
         Button bunkersButton = (Button) findViewById(R.id.bunkers_button);

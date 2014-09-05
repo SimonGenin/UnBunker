@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Vendre une prévente"
-        android:id="@+id/button2"
+        android:id="@+id/sell_presale_button"
         android:layout_below="@+id/buy_presale_button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="Bunkers"
         android:id="@+id/bunkers_button"
-        android:layout_below="@+id/button2"
+        android:layout_below="@+id/sell_presale_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"/>
 
