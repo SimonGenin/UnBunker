@@ -110,6 +110,21 @@ public class User {
 
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "connected=" + connected +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", gsm='" + gsm + '\'' +
+                ", date='" + date + '\'' +
+                ", etat=" + etat +
+                '}';
+    }
+
     public void connect() {
         connected = true;
     }

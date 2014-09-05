@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.UnBunkerApplication;
+import be.simongenin.unbunker.classes.User;
 
 
 public class LoginActivity extends Activity {
@@ -46,16 +47,13 @@ public class LoginActivity extends Activity {
                     // check la bd si il existe
                     if (checkConnection(nickname, name, password)) {
 
-                        // TODO change data given to user be the ones into the DB
-                        UnBunkerApplication.user.setName(name);
-                        UnBunkerApplication.user.setNickname(nickname);
-
-                        UnBunkerApplication.user.connect();
-
                         Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+
+                    } else {
+                        showDialogWrongData();
                     }
 
                 }
@@ -66,8 +64,18 @@ public class LoginActivity extends Activity {
     }
 
     private boolean checkConnection(String nkn, String n, String p) {
-        // TODO check connection + error dialog
-        return true;
+
+        User.fillUsersListFromDataBase();
+
+        for (User user : User.users) {
+            if (user.getNickname().equals(nkn) && user.getName().equals(n) && user.getPassword().equals(p)) {
+                UnBunkerApplication.user = user;
+                UnBunkerApplication.user.connect();
+                return true;
+            }
+        }
+
+        return false;
 
     }
 
@@ -88,6 +96,15 @@ public class LoginActivity extends Activity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Impossible de se connecter");
         builder.setMessage("Tous les champs doivent être remplis.");
+        builder.setPositiveButton(android.R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void showDialogWrongData() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Impossible de se connecter");
+        builder.setMessage("Vos informations sont incorrectes.");
         builder.setPositiveButton(android.R.string.ok, null);
         AlertDialog dialog = builder.create();
         dialog.show();
