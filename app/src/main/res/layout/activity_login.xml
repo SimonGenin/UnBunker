@@ -17,9 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="40sp"
-        android:textStyle="bold"
-
-        />
+        android:textStyle="bold"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -28,6 +26,7 @@
         android:hint="Prénom"
         android:layout_marginTop="37dp"
         android:layout_below="@+id/title"
+        android:inputType="textPersonName"
         />
 
     <EditText
@@ -36,7 +35,9 @@
         android:id="@+id/name_edt"
         android:layout_below="@+id/nickname_edt"
         android:layout_centerHorizontal="true"
-        android:hint="Nom"/>
+        android:hint="Nom"
+        android:inputType="textPersonName"
+        />
 
     <EditText
         android:layout_width="match_parent"
@@ -44,8 +45,8 @@
         android:id="@+id/mdp_edt"
         android:layout_below="@+id/name_edt"
         android:layout_centerHorizontal="true"
-        android:password="true"
         android:hint="Mot de passe"
+        android:inputType="textPassword"
         />
 
     <Button
@@ -74,7 +75,10 @@
         android:text="Créé par Simon Genin"
         android:id="@+id/copyright"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textStyle="italic"/>
+
+
 
 
 </RelativeLayout>
