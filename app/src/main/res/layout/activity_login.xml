@@ -44,6 +44,7 @@
         android:id="@+id/mdp_edt"
         android:layout_below="@+id/name_edt"
         android:layout_centerHorizontal="true"
+        android:password="true"
         android:hint="Mot de passe"
         />
 
@@ -66,6 +67,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="41dp"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Créé par Simon Genin"
+        android:id="@+id/copyright"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>

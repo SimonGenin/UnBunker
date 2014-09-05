@@ -27,24 +27,10 @@ public class MenuActivity extends Activity {
 
         // TEST
         final TextView textTest = (TextView) findViewById(R.id.textText);
+        textTest.setText(UnBunkerApplication.user.getNickname() + " est connecté");
 
         // Si pas connecté, renvoi vers la page de connexion
         redirectToLoginIfNeeded();
-
-        // Deconnection
-        // TODO mettre dans un menu
-        Button disconnectButton = (Button) findViewById(R.id.disconnect_button);
-        disconnectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UnBunkerApplication.user.disconnect();
-                Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
-
 
         /*
             Acheter des preventes
@@ -104,8 +90,13 @@ public class MenuActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logout) {
+            UnBunkerApplication.user.disconnect();
+            UnBunkerApplication.user = null;
+            Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
