@@ -5,11 +5,12 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import be.simongenin.unbunker.DataBase;
 
-public class Presale {
+public class Presale implements Serializable {
 
     public static ArrayList<Presale> presales = new ArrayList<Presale>();
 

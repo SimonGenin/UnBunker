@@ -1,27 +1,40 @@
-package be.simongenin.unbunker.activities;
+package be.simongenin.unbunker;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import be.simongenin.unbunker.R;
+import be.simongenin.unbunker.classes.Presale;
+import be.simongenin.unbunker.classes.User;
 
-public class SellPresaleActivity extends Activity {
+
+public class BuyPresaleDetailsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sell_presale);
+        setContentView(R.layout.activity_buy_presale_details);
 
-        final TextView seekedPresalesNumber = (TextView) findViewById(R.id.presales_seeked_number);
-        seekedPresalesNumber.setText("1");
+        // Get the intent
+        Intent gottenIntent = getIntent();
+        User seller = (User) gottenIntent.getSerializableExtra("USER");
+        Presale pre = (Presale) gottenIntent.getSerializableExtra("PRESALE");
+
+        // Met le nom du vendeur
+        TextView sellerNameText = (TextView) findViewById(R.id.seller_name);
+        sellerNameText.setText(seller.getNickname() + " " + seller.getName());
+
+
+        // Seekbar + nombre
+        final TextView numberPresalesText = (TextView) findViewById(R.id.presales_seeked_number);
+        numberPresalesText.setText("1");
 
         final SeekBar seekBarPresale = (SeekBar) findViewById(R.id.seekBar_presales);
-        seekBarPresale.setMax(5);
+        seekBarPresale.setMax(pre.getPresaleLeftNumber());
         seekBarPresale.setProgress(1);
         seekBarPresale.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -30,37 +43,21 @@ public class SellPresaleActivity extends Activity {
                     seekBarPresale.setProgress(1);
                 }
 
-                seekedPresalesNumber.setText(String.valueOf(seekBarPresale.getProgress()));
+                numberPresalesText.setText(String.valueOf(seekBarPresale.getProgress()));
+
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
+
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 
-        final TextView sellMoreText = (TextView) findViewById(R.id.sell_more_text);
-        sellMoreText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                switch (seekBarPresale.getMax()) {
-                    case 5 :
-                        seekBarPresale.setMax(10);
-                        break;
-                    case 10 :
-                        seekBarPresale.setMax(20);
-                        break;
-                    case 20 :
-                        seekBarPresale.setMax(100);
-                        sellMoreText.setVisibility(View.INVISIBLE);
-                        break;
-                }
-            }
-        });
 
     }
 
@@ -68,7 +65,7 @@ public class SellPresaleActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.sell_presale, menu);
+        getMenuInflater().inflate(R.menu.buy_presale_details, menu);
         return true;
     }
 

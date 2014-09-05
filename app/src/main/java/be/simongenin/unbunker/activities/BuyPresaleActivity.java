@@ -1,14 +1,17 @@
 package be.simongenin.unbunker.activities;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import be.simongenin.unbunker.BuyPresaleDetailsActivity;
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;
@@ -28,7 +31,7 @@ public class BuyPresaleActivity extends ListActivity {
                 TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                 TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
-                text1.setText(User.getUserNameByd(Presale.getNotSoldPresales().get(position).getCompte_id()));
+                text1.setText(User.getUserNameById(Presale.getNotSoldPresales().get(position).getCompte_id()));
                 text2.setText(Presale.getNotSoldPresales().get(position).getPresaleLeftNumber() + "");
 
                 return view;
@@ -39,6 +42,15 @@ public class BuyPresaleActivity extends ListActivity {
 
     }
 
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+
+        Intent intent = new Intent(this, BuyPresaleDetailsActivity.class);
+        intent.putExtra("USER", User.getUserById(Presale.getNotSoldPresales().get(position).getCompte_id()));
+        intent.putExtra("PRESALE", Presale.getNotSoldPresales().get(position));
+        startActivity(intent);
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

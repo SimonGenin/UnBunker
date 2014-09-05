@@ -6,11 +6,12 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import be.simongenin.unbunker.DataBase;
 
-public class User {
+public class User implements Serializable {
 
     public static ArrayList<User> users = new ArrayList<User>();
 
@@ -41,7 +42,19 @@ public class User {
         this.etat = etat;
     }
 
-    public static String getUserNameByd(int id) {
+    public static User getUserById(int id) {
+
+        for (User user : User.users) {
+            if (id == user.getId()) {
+                return user;
+            }
+        }
+
+        return null;
+
+    }
+
+    public static String getUserNameById(int id) {
 
         for (User user : User.users) {
 
