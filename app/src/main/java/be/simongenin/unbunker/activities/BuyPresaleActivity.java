@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.classes.Presale;
+import be.simongenin.unbunker.classes.User;
 
 public class BuyPresaleActivity extends ListActivity {
 
@@ -19,7 +20,7 @@ public class BuyPresaleActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_presale);
 
-        ArrayAdapter<Presale> adapter = new ArrayAdapter<Presale>(this, android.R.layout.simple_list_item_2, android.R.id.text1, Presale.presales) {
+        ArrayAdapter<Presale> adapter = new ArrayAdapter<Presale>(this, android.R.layout.simple_list_item_2, android.R.id.text1, Presale.getNotSoldPresales()) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -27,8 +28,8 @@ public class BuyPresaleActivity extends ListActivity {
                 TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                 TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
-                text1.setText(Presale.getUserNameByd(Presale.presales.get(position).getCompte_id()));
-                text2.setText(Presale.presales.get(position).getPresaleLeftNumber() + "");
+                text1.setText(User.getUserNameByd(Presale.getNotSoldPresales().get(position).getCompte_id()));
+                text2.setText(Presale.getNotSoldPresales().get(position).getPresaleLeftNumber() + "");
 
                 return view;
             }

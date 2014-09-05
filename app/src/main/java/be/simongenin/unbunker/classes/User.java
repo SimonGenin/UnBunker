@@ -41,6 +41,29 @@ public class User {
         this.etat = etat;
     }
 
+    public static String getUserNameByd(int id) {
+
+        for (User user : User.users) {
+
+            if (id == user.getId()) {
+                StringBuilder sb = new StringBuilder();
+
+                if (user.getNickname() != null && !user.getNickname().isEmpty() && !user.getNickname().equals("null")) {
+                    sb.append(user.getNickname() + " ");
+                }
+
+                if (user.getName() != null && !user.getName().isEmpty() && !user.getName().equals("null")) {
+                    sb.append(user.getName());
+                }
+
+                return new String(sb);
+            }
+
+        }
+
+        return null;
+    }
+
     public static void fillUsersListFromDataBase() {
         Thread t = new Thread(new Runnable() {
             @Override

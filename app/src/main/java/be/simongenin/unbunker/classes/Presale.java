@@ -34,29 +34,25 @@ public class Presale {
         return this.nb_total - this.nb_vendu;
     }
 
-    public static String getUserNameByd(int id) {
+    /*
+        Permet de récupérer les preventes non vendues.
+        Car DB garde meme celles ou il n'y en reste plus
+     */
+    public static ArrayList<Presale> getNotSoldPresales(){
 
-        for (User user : User.users) {
+        ArrayList<Presale> unsoldPresales = new ArrayList<Presale>();
 
-            if (id == user.getId()) {
-                StringBuilder sb = new StringBuilder();
+        for (Presale pre : presales) {
 
-                if (user.getNickname() != null && !user.getNickname().isEmpty() && !user.getNickname().equals("null")) {
-                    sb.append(user.getNickname() + " ");
-                }
-
-                if (user.getName() != null && !user.getName().isEmpty() && !user.getName().equals("null")) {
-                    sb.append(user.getName());
-                }
-
-                return new String(sb);
+            if(pre.getPresaleLeftNumber() > 0) {
+                unsoldPresales.add(pre);
             }
 
         }
 
-        return null;
-    }
+        return unsoldPresales;
 
+    }
 
 
     public static void fillPresalesListFromDataBase() {
