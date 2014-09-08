@@ -3,6 +3,7 @@ package be.simongenin.unbunker.classes;
 import android.util.Log;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -13,6 +14,8 @@ import be.simongenin.unbunker.DataBase;
 public class Presale implements Serializable {
 
     public static ArrayList<Presale> presales = new ArrayList<Presale>();
+
+    private static JSONObject preJSONForUniqueFetch;
 
     private int id;
     private int compte_id;
@@ -75,6 +78,48 @@ public class Presale implements Serializable {
         }
     }
 
+    public static Presale getOnePresaleByIdFromDataBase(final int id) {
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preJSONForUniqueFetch = DataBase.getOneDataByURL("getAPresale.php?id=" + id);
+            }
+        });
+
+        t.start();
+
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        JSONObject preJSON = preJSONForUniqueFetch;
+
+        if (preJSON == null) {
+            return null;
+        }
+
+        Presale presale = null;
+
+        try {
+            presale = new Presale(
+                    preJSON.getInt("IdPre"),
+                    preJSON.getInt("Id_Compte"),
+                    preJSON.getInt("Id_Bunker"),
+                    preJSON.getInt("Nb_Total"),
+                    preJSON.getInt("Nb_Vendu"),
+                    preJSON.getString("Date_Post")
+            );
+
+        } catch (JSONException e) {
+                e.printStackTrace();
+                return null;
+        }
+
+        return presale;
+    }
 
     private static void fillPresales(JSONArray jsr) {
 

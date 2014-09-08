@@ -1,6 +1,8 @@
 package be.simongenin.unbunker;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import be.simongenin.unbunker.activities.BuyPresaleActivity;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;
 
@@ -28,37 +31,66 @@ public class BuyPresaleDetailsActivity extends Activity {
         TextView sellerNameText = (TextView) findViewById(R.id.seller_name);
         sellerNameText.setText(seller.getNickname() + " " + seller.getName());
 
+        Presale presaleExistCheck = Presale.getOnePresaleByIdFromDataBase(pre.getId());
+        if (presaleExistCheck == null) {
+            Presale.fillPresalesListFromDataBase();
+            unexistingPresaleDialog();
+        } else {
 
-        // Seekbar + nombre
-        final TextView numberPresalesText = (TextView) findViewById(R.id.presales_seeked_number);
-        numberPresalesText.setText("1");
+            // Afin de récupéré le bon nombre de préventes restantes.
+            pre = presaleExistCheck;
 
-        final SeekBar seekBarPresale = (SeekBar) findViewById(R.id.seekBar_presales);
-        seekBarPresale.setMax(pre.getPresaleLeftNumber());
-        seekBarPresale.setProgress(1);
-        seekBarPresale.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (seekBarPresale.getProgress() == 0) {
-                    seekBarPresale.setProgress(1);
+            // Seekbar + nombre
+            final TextView numberPresalesText = (TextView) findViewById(R.id.presales_seeked_number);
+            numberPresalesText.setText("1");
+
+            final SeekBar seekBarPresale = (SeekBar) findViewById(R.id.seekBar_presales);
+            seekBarPresale.setMax(pre.getPresaleLeftNumber());
+            seekBarPresale.setProgress(1);
+            seekBarPresale.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    if (seekBarPresale.getProgress() == 0) {
+                        seekBarPresale.setProgress(1);
+                    }
+
+                    numberPresalesText.setText(String.valueOf(seekBarPresale.getProgress()));
+
                 }
 
-                numberPresalesText.setText(String.valueOf(seekBarPresale.getProgress()));
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
 
-            }
+                }
 
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+
+        }
+
+
+
+
+    }
+
+    private void unexistingPresaleDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Prévente déjà vendue!");
+        builder.setMessage("Malheureusement, il semblerait que cette prévente soit déjà vendue...");
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(BuyPresaleDetailsActivity.this, BuyPresaleActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
-
-
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 
