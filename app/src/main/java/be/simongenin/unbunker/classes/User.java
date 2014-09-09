@@ -121,6 +121,7 @@ public class User implements Serializable {
 
         }
 
+
     }
 
     @Override
@@ -143,6 +144,10 @@ public class User implements Serializable {
     }
 
     public void disconnect() {
+
+        // Shared preferences
+
+
         connected = false;
     }
 

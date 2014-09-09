@@ -3,6 +3,7 @@ package be.simongenin.unbunker.activities;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +28,13 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        if (checkSharedPrefs()) {
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+
         // init
         nicknameEDT = (EditText) findViewById(R.id.nickname_edt);
         nameEDT = (EditText) findViewById(R.id.name_edt);
@@ -47,6 +55,8 @@ public class LoginActivity extends Activity {
                     // check la bd si il existe
                     if (checkConnection(nickname, name, password)) {
 
+                        storeSharedPrefs(UnBunkerApplication.user);
+
                         Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -63,12 +73,59 @@ public class LoginActivity extends Activity {
 
     }
 
+    private void storeSharedPrefs(User user) {
+
+        SharedPreferences autoConnection = getSharedPreferences(UnBunkerApplication.SHARED_PREFS_FILE_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = autoConnection.edit();
+
+        editor.putBoolean("CONNECTED", true);
+
+        editor.putInt("ID", user.getId());
+        editor.putString("NICKNAME", user.getNickname());
+        editor.putString("NAME", user.getName());
+        editor.putString("EMAIL", user.getEmail());
+        editor.putString("GSM", user.getGsm());
+        editor.putInt("ETAT", user.getEtat());
+
+        editor.commit();
+
+    }
+
+    private boolean checkSharedPrefs() {
+
+        SharedPreferences autoConnection = getSharedPreferences(UnBunkerApplication.SHARED_PREFS_FILE_NAME, MODE_PRIVATE);
+
+        boolean connected = autoConnection.getBoolean("CONNECTED", false);
+
+        if (connected) {
+
+            int id = autoConnection.getInt("ID", -1);
+            String nickname = autoConnection.getString("NICKNAME", null);
+            String name = autoConnection.getString("NAME", null);
+            String email = autoConnection.getString("EMAIL", null);
+            String gsm = autoConnection.getString("GSM", null);
+            int etat = autoConnection.getInt("ETAT", 0);
+
+            UnBunkerApplication.user = new User(id, name, nickname, null, email, gsm, null, etat);
+            UnBunkerApplication.user.connect();
+
+            return true;
+
+        }
+
+        UnBunkerApplication.user = null;
+
+        return false;
+
+    }
+
     private boolean checkConnection(String nkn, String n, String p) {
 
         User.fillUsersListFromDataBase();
 
         for (User user : User.users) {
             if (user.getNickname().equals(nkn) && user.getName().equals(n) && user.getPassword().equals(p)) {
+
                 UnBunkerApplication.user = user;
                 UnBunkerApplication.user.connect();
                 return true;
