@@ -6,12 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import be.simongenin.unbunker.BuyPresaleDetailsActivity;
+import be.simongenin.unbunker.PresaleAdapter;
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;
@@ -23,6 +20,10 @@ public class BuyPresaleActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_presale);
 
+        PresaleAdapter adapter = new PresaleAdapter(this, Presale.getNotSoldPresales());
+        getListView().setAdapter(adapter);
+
+        /*
         ArrayAdapter<Presale> adapter = new ArrayAdapter<Presale>(this, android.R.layout.simple_list_item_2, android.R.id.text1, Presale.getNotSoldPresales()) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
@@ -39,6 +40,7 @@ public class BuyPresaleActivity extends ListActivity {
         };
 
         getListView().setAdapter(adapter);
+        */
 
     }
 

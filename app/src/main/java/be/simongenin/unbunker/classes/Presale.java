@@ -23,7 +23,9 @@ public class Presale implements Serializable {
     private int nb_total;
     private int nb_vendu;
     // Format date : YYYY-MM-DD HH:MM:SS
-    private String date_post;
+    private String date_post;  
+
+
 
     public Presale(int id, int compte_id, int bunker_id, int nb_total, int nb_vendu, String date_post) {
         this.id = id;
@@ -32,6 +34,7 @@ public class Presale implements Serializable {
         this.nb_total = nb_total;
         this.nb_vendu = nb_vendu;
         this.date_post = date_post;
+
     }
 
     public int getPresaleLeftNumber() {
@@ -209,5 +212,6 @@ public class Presale implements Serializable {
     public void setDate_post(String date_post) {
         this.date_post = date_post;
     }
+
 
 }

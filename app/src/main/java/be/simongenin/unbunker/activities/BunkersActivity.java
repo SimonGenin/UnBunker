@@ -9,8 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import be.simongenin.unbunker.classes.Bunker;
 import be.simongenin.unbunker.R;
+import be.simongenin.unbunker.classes.Bunker;
+import be.simongenin.unbunker.classes.DateHandler;
 
 
 public class BunkersActivity extends ListActivity {
@@ -29,7 +30,7 @@ public class BunkersActivity extends ListActivity {
                 TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
                 text1.setText(Bunker.bunkers.get(position).getName());
-                text2.setText(Bunker.bunkers.get(position).getDate());
+                text2.setText(DateHandler.formatDateYMDToString(Bunker.bunkers.get(position).getDate()));
 
                 return view;
             }

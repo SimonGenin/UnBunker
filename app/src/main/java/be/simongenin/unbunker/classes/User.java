@@ -13,6 +13,7 @@ import be.simongenin.unbunker.DataBase;
 
 public class User implements Serializable {
 
+    public static final int ROLE_ADMIN = 1;
     public static ArrayList<User> users = new ArrayList<User>();
 
     private boolean connected;
@@ -26,12 +27,13 @@ public class User implements Serializable {
     // Format date : YYYY-MM-DD HH-MM-SS
     private String date;
     private int etat;
+    private int role;
 
     public User() {
         connected = false;
     }
 
-    public User(int id, String name, String nickname, String password, String email, String gsm, String date, int etat) {
+    public User(int id, String name, String nickname, String password, String email, String gsm, String date, int etat, int role) {
         this.id = id;
         this.name = name;
         this.nickname = nickname;
@@ -40,6 +42,7 @@ public class User implements Serializable {
         this.gsm = gsm;
         this.date = date;
         this.etat = etat;
+        this.role = role;
     }
 
     public static User getUserById(int id) {
@@ -111,7 +114,7 @@ public class User implements Serializable {
 
                     JSONObject user = jsr.getJSONObject(i);
 
-                    users.add(new User(user.getInt("Id"), user.getString("Nom"), user.getString("Prenom"),user.getString("Pass"), user.getString("Email"), user.getString("Gsm"), user.getString("Date_Inscription"), user.getInt("Etat")));
+                    users.add(new User(user.getInt("Id"), user.getString("Nom"), user.getString("Prenom"),user.getString("Pass"), user.getString("Email"), user.getString("Gsm"), user.getString("Date_Inscription"), user.getInt("Etat"), user.getInt("role")));
 
                 }
 
@@ -217,5 +220,9 @@ public class User implements Serializable {
 
     public void setEtat(int etat) {
         this.etat = etat;
+    }
+
+    public int getRole() {
+        return role;
     }
 }

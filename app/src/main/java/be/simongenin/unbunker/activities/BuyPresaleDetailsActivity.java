@@ -1,4 +1,4 @@
-package be.simongenin.unbunker;
+package be.simongenin.unbunker.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import be.simongenin.unbunker.activities.BuyPresaleActivity;
+import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;
 

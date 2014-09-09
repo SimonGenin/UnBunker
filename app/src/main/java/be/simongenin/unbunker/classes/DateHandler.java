@@ -28,6 +28,7 @@ public class DateHandler {
     }
 
     // Convertu yyyy-MM-dd HH:mm:ss en beau format (il y 7 minutes)
+    // Ajoute une majuscule
     public static String formatDateTimeAgo(String ds) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

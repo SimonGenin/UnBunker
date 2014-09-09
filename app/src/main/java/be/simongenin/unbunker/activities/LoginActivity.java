@@ -20,7 +20,7 @@ public class LoginActivity extends Activity {
 
     private EditText nicknameEDT;
     private EditText nameEDT;
-    private  EditText passwordEDT;
+    private EditText passwordEDT;
 
 
     @Override
@@ -86,6 +86,7 @@ public class LoginActivity extends Activity {
         editor.putString("EMAIL", user.getEmail());
         editor.putString("GSM", user.getGsm());
         editor.putInt("ETAT", user.getEtat());
+        editor.putInt("ROLE", user.getRole());
 
         editor.apply();
 
@@ -105,8 +106,9 @@ public class LoginActivity extends Activity {
             String email = autoConnection.getString("EMAIL", null);
             String gsm = autoConnection.getString("GSM", null);
             int etat = autoConnection.getInt("ETAT", 0);
+            int role = autoConnection.getInt("ROLE", 0);
 
-            UnBunkerApplication.user = new User(id, name, nickname, null, email, gsm, null, etat);
+            UnBunkerApplication.user = new User(id, name, nickname, null, email, gsm, null, etat, role);
             UnBunkerApplication.user.connect();
 
             return true;
