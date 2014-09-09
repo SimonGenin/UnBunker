@@ -23,26 +23,9 @@ public class BuyPresaleActivity extends ListActivity {
         PresaleAdapter adapter = new PresaleAdapter(this, Presale.getNotSoldPresales());
         getListView().setAdapter(adapter);
 
-        /*
-        ArrayAdapter<Presale> adapter = new ArrayAdapter<Presale>(this, android.R.layout.simple_list_item_2, android.R.id.text1, Presale.getNotSoldPresales()) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-
-                TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-                TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-
-                text1.setText(User.getUserNameById(Presale.getNotSoldPresales().get(position).getCompte_id()));
-                text2.setText(Presale.getNotSoldPresales().get(position).getPresaleLeftNumber() + "");
-
-                return view;
-            }
-        };
-
-        getListView().setAdapter(adapter);
-        */
-
     }
+
+
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {

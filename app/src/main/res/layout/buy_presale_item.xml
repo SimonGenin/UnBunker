@@ -52,19 +52,37 @@
         />
 
     <TextView
-        android:id="@+id/role"
+        android:id="@+id/role_admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ADMINISTRATEUR"
         android:layout_below="@id/times_ago"
         android:textSize="10dp"
-        android:background="#ffff4036"
+        android:textStyle="bold"
+        android:background="@drawable/role_admin_bg"
         android:padding="4dp"
         android:textColor="@android:color/white"
         android:visibility="gone"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="2dp"
+    />
 
+    <TextView
+        android:id="@+id/role_dev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEVELOPPEUR"
+        android:layout_below="@id/times_ago"
+        android:layout_toRightOf="@id/role_admin"
+        android:textSize="10dp"
+        android:background="@drawable/role_dev_bg"
+        android:padding="4dp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="4dp"
         />
 
 </RelativeLayout>

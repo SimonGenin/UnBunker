@@ -58,16 +58,26 @@ public class PresaleAdapter extends ArrayAdapter<Presale> {
         holder.timesAgo.setText(date);
         holder.numberPresales.setText(number);
 
+        TextView roleAdmin = (TextView) convertView.findViewById(R.id.role_admin);
+        TextView roleDev = (TextView) convertView.findViewById(R.id.role_dev);
+
         if (user.getRole() == User.ROLE_ADMIN) {
-
-            TextView role = (TextView) convertView.findViewById(R.id.role);
-            role.setVisibility(View.VISIBLE);
-
+            roleAdmin.setVisibility(View.VISIBLE);
+            roleDev.setVisibility(View.GONE);
+        }
+        else if (user.getRole() == User.ROLE_ADMIN_AND_DEV) {
+            roleAdmin.setVisibility(View.VISIBLE);
+            roleDev.setVisibility(View.VISIBLE);
+        }
+        else {
+            roleAdmin.setVisibility(View.GONE);
+            roleDev.setVisibility(View.GONE);
         }
 
         return convertView;
 
     }
+
 
     private static class ViewHolder {
         TextView nametxt;
