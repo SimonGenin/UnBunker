@@ -87,7 +87,7 @@ public class LoginActivity extends Activity {
         editor.putString("GSM", user.getGsm());
         editor.putInt("ETAT", user.getEtat());
 
-        editor.commit();
+        editor.apply();
 
     }
 
