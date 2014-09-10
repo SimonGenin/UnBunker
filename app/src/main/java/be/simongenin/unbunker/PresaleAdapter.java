@@ -60,22 +60,32 @@ public class PresaleAdapter extends ArrayAdapter<Presale> {
 
         TextView roleAdmin = (TextView) convertView.findViewById(R.id.role_admin);
         TextView roleDev = (TextView) convertView.findViewById(R.id.role_dev);
+        TextView rolePrio = (TextView) convertView.findViewById(R.id.role_prio);
 
         if (user.getRole() == User.ROLE_ADMIN) {
             roleAdmin.setVisibility(View.VISIBLE);
             roleDev.setVisibility(View.GONE);
+            rolePrio.setVisibility(View.GONE);
         }
         else if (user.getRole() == User.ROLE_DEV) {
             roleAdmin.setVisibility(View.GONE);
             roleDev.setVisibility(View.VISIBLE);
+            rolePrio.setVisibility(View.GONE);
         }
         else if (user.getRole() == User.ROLE_ADMIN_AND_DEV) {
             roleAdmin.setVisibility(View.VISIBLE);
             roleDev.setVisibility(View.VISIBLE);
+            rolePrio.setVisibility(View.GONE);
+        }
+        else if (user.getRole() == User.ROLE_PRIORITAIRE) {
+            roleAdmin.setVisibility(View.GONE);
+            roleDev.setVisibility(View.GONE);
+            rolePrio.setVisibility(View.VISIBLE);
         }
         else {
             roleAdmin.setVisibility(View.GONE);
             roleDev.setVisibility(View.GONE);
+            rolePrio.setVisibility(View.GONE);
         }
 
         return convertView;

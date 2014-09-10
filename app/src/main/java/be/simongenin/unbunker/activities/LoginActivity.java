@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.UnBunkerApplication;
+import be.simongenin.unbunker.classes.Network;
 import be.simongenin.unbunker.classes.User;
 
 
@@ -44,6 +45,9 @@ public class LoginActivity extends Activity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Network.checkNetwork(LoginActivity.this);
+
 
                 // Recupere les données
                 String nickname = nicknameEDT.getText().toString().trim();

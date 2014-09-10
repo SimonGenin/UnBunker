@@ -16,6 +16,7 @@ public class User implements Serializable {
     public static final int ROLE_ADMIN = 1;
     public static final int ROLE_DEV = 2;
     public static final int ROLE_ADMIN_AND_DEV = 3;
+    public static final int ROLE_PRIORITAIRE = 4;
 
     public static ArrayList<User> users = new ArrayList<User>();
 

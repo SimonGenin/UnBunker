@@ -9,5 +9,6 @@
     <string name="title_activity_buy_presale">BuyPresaleActivity</string>
     <string name="title_activity_sell_presale">Vendre</string>
     <string name="title_activity_buy_presale_details">BuyPresaleDetailsActivity</string>
+    <string name="title_activity_no_network_available">Connexion</string>
 
 </resources>

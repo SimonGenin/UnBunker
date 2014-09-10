@@ -13,6 +13,7 @@ import android.widget.TextView;
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.UnBunkerApplication;
 import be.simongenin.unbunker.classes.Bunker;
+import be.simongenin.unbunker.classes.Network;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;
 
@@ -23,6 +24,8 @@ public class MenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        Network.checkNetwork(MenuActivity.this);
 
         // TEST
         final TextView textTest = (TextView) findViewById(R.id.textText);
@@ -39,10 +42,13 @@ public class MenuActivity extends Activity {
         buyPresaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Presale.fillPresalesListFromDataBase();
                 User.fillUsersListFromDataBase();
                 Intent intent = new Intent(MenuActivity.this, BuyPresaleActivity.class);
                 startActivity(intent);
+
+                Network.checkNetwork(MenuActivity.this);
             }
         });
 
@@ -53,8 +59,11 @@ public class MenuActivity extends Activity {
         sellPresaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(MenuActivity.this, SellPresaleActivity.class);
                 startActivity(intent);
+
+                Network.checkNetwork(MenuActivity.this);
             }
         });
 
@@ -65,9 +74,12 @@ public class MenuActivity extends Activity {
         bunkersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Bunker.fillBunkersListFromDataBase();
                 Intent intent = new Intent(MenuActivity.this, BunkersActivity.class);
                 startActivity(intent);
+
+                Network.checkNetwork(MenuActivity.this);
             }
         });
 

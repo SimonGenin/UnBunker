@@ -4,14 +4,10 @@ import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
+import be.simongenin.unbunker.BunkerAdapter;
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.classes.Bunker;
-import be.simongenin.unbunker.classes.DateHandler;
 
 
 public class BunkersActivity extends ListActivity {
@@ -21,23 +17,8 @@ public class BunkersActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bunkers);
 
-        ArrayAdapter<Bunker> adapter = new ArrayAdapter<Bunker>(this, android.R.layout.simple_list_item_2, android.R.id.text1, Bunker.bunkers) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-
-                TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-                TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-
-                text1.setText(Bunker.bunkers.get(position).getName());
-                text2.setText(DateHandler.formatDateYMDToString(Bunker.bunkers.get(position).getDate()));
-
-                return view;
-            }
-        };
-
+        BunkerAdapter adapter = new BunkerAdapter(this, Bunker.bunkers);
         getListView().setAdapter(adapter);
-
 
     }
 
