@@ -1,4 +1,4 @@
-package be.simongenin.unbunker;
+package be.simongenin.unbunker.adapters;
 
 
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.classes.DateHandler;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import be.simongenin.unbunker.BunkerAdapter;
+import be.simongenin.unbunker.adapters.BunkerAdapter;
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.classes.Bunker;
 

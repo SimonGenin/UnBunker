@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
-import be.simongenin.unbunker.PresaleAdapter;
+import be.simongenin.unbunker.adapters.PresaleAdapter;
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;
