@@ -28,6 +28,7 @@ public class MenuActivity extends Activity {
         final TextView textTest = (TextView) findViewById(R.id.textText);
         textTest.setText(UnBunkerApplication.user.getNickname() + " est connecté");
 
+
         // Si pas connecté, renvoi vers la page de connexion
         redirectToLoginIfNeeded();
 

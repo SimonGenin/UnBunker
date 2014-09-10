@@ -54,7 +54,6 @@ public class DataBase {
             HttpURLConnection connection = (HttpURLConnection) feedURL.openConnection();
             connection.connect();
             responseCode = connection.getResponseCode();
-            int i = 23;
 
             if (responseCode == HttpURLConnection.HTTP_OK) {
 
@@ -79,4 +78,83 @@ public class DataBase {
         return jso;
     }
 
+    public static int deletePresale(int id, int number) {
+
+        // Variable contenant les pres dispo si erreur
+        int presStillAvailable = -1;
+
+        // connection
+        int responseCode = -1;
+
+        try {
+            URL feedURL = new URL("http://10.0.3.2/unbunkerandroid/deleteAPresale.php?id=" + String.valueOf(id) + "&num=" + String.valueOf(number));
+            HttpURLConnection connection = (HttpURLConnection) feedURL.openConnection();
+            connection.connect();
+            responseCode = connection.getResponseCode();
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+
+                InputStream inputStream = connection.getInputStream();
+                Reader reader = new InputStreamReader(inputStream);
+                int contentLength = connection.getContentLength();
+                char[] charArray = new char[contentLength];
+                reader.read(charArray);
+                String responseData = new String(charArray);
+
+                // Si il y a une erreur
+                if (responseData.substring(0, 5).equals("error")) {
+
+                    presStillAvailable = Integer.parseInt(responseData.substring(8));
+
+                }
+
+            }
+
+
+
+        } catch (Exception e) {
+            Log.e(UnBunkerApplication.DEBUG_TAG, "HTTP error : " + e.getMessage());
+        }
+
+
+        return presStillAvailable;
+
+    }
+
+    // retourne true si une erreure est survenue
+    public static boolean createPresale(int compte_id, int bunker_Id, int number) {
+
+        // connection
+        int responseCode = -1;
+
+        try {
+            URL feedURL = new URL("http://10.0.3.2/unbunkerandroid/createAPresale.php?compte=" + compte_id + "&bunker=" + bunker_Id + "&num=" + number);
+            HttpURLConnection connection = (HttpURLConnection) feedURL.openConnection();
+            connection.connect();
+            responseCode = connection.getResponseCode();
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+
+                InputStream inputStream = connection.getInputStream();
+                Reader reader = new InputStreamReader(inputStream);
+                int contentLength = connection.getContentLength();
+                char[] charArray = new char[contentLength];
+                reader.read(charArray);
+                String responseData = new String(charArray);
+
+                if (!responseData.isEmpty()) {
+                    return true;
+                }
+
+
+            }
+
+
+        } catch (Exception e) {
+            Log.e(UnBunkerApplication.DEBUG_TAG, "HTTP error : " + e.getMessage());
+        }
+
+        return false;
+
+    }
 }

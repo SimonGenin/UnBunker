@@ -65,6 +65,10 @@ public class PresaleAdapter extends ArrayAdapter<Presale> {
             roleAdmin.setVisibility(View.VISIBLE);
             roleDev.setVisibility(View.GONE);
         }
+        else if (user.getRole() == User.ROLE_DEV) {
+            roleAdmin.setVisibility(View.GONE);
+            roleDev.setVisibility(View.VISIBLE);
+        }
         else if (user.getRole() == User.ROLE_ADMIN_AND_DEV) {
             roleAdmin.setVisibility(View.VISIBLE);
             roleDev.setVisibility(View.VISIBLE);

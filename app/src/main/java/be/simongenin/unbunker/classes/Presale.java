@@ -37,6 +37,7 @@ public class Presale implements Serializable {
 
     }
 
+
     public int getPresaleLeftNumber() {
         return this.nb_total - this.nb_vendu;
     }
