@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Unbunker" >
         <activity
             android:name=".activities.MenuActivity"
-            android:label="@string/app_name" >
+            android:label="Menu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".activities.BunkersActivity"
-            android:label="@string/title_activity_bunkers"
+            android:label="Les Bunkers"
             android:parentActivityName=".activities.MenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -35,7 +35,7 @@
         </activity>
         <activity
             android:name=".activities.BuyPresaleActivity"
-            android:label="@string/title_activity_buy_presale"
+            android:label="Préventes disponnibles"
             android:parentActivityName=".activities.MenuActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -51,7 +51,7 @@
         </activity>
         <activity
             android:name=".activities.BuyPresaleDetailsActivity"
-            android:label="@string/title_activity_buy_presale_details"
+            android:label="Détails de l'achat"
             android:parentActivityName=".activities.BuyPresaleActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -59,7 +59,9 @@
         </activity>
         <activity
             android:name=".activities.NoNetworkAvailableActivity"
-            android:label="@string/title_activity_no_network_available" >
+            android:label="Connexion non disponnible"
+            android:theme="@style/Theme.Unbunker.NoActionBar"
+            >
         </activity>
     </application>
 

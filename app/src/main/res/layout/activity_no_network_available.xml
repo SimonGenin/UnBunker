@@ -23,11 +23,12 @@
         android:layout_height="wrap_content"
         android:text="Pas de connexion internet"
         android:id="@+id/textView"
-        android:textColor="#ff2c2c2c"
+        android:textColor="@color/light_grey"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        />
 
     <Button
         android:layout_width="match_parent"

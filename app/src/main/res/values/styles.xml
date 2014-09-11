@@ -1,6 +1,6 @@
 <resources>
 
-   <style name="Theme.Unbunker" parent="@android:style/Theme.Holo.Light">
+   <style name="Theme.Unbunker" parent="@android:style/Theme.Holo">
         <item name="android:actionBarItemBackground">@drawable/selectable_background_unbunker</item>
         <item name="android:popupMenuStyle">@style/PopupMenu.Unbunker</item>
         <item name="android:dropDownListViewStyle">@style/DropDownListView.Unbunker</item>
@@ -14,7 +14,16 @@
        <item name="android:editTextBackground">@drawable/unbunker_edit_text_holo_light</item>
        <item name="android:buttonStyle">@style/ButtonUnBunker</item>
        <item name="android:imageButtonStyle">@style/ImageButtonUnBunker</item>
+       <item name="android:seekBarStyle">@style/SeekBarUnBunker</item>
 
+       <item name="android:windowBackground">@color/dark_blue</item>
+
+    </style>
+
+    <style name="SeekBarUnBunker" parent="android:Widget.Holo.SeekBar">
+        <item name="android:progressDrawable">@drawable/unbunker_scrubber_progress_horizontal_holo_dark</item>
+        <item name="android:indeterminateDrawable">@drawable/unbunker_scrubber_progress_horizontal_holo_dark</item>
+        <item name="android:thumb">@drawable/unbunker_scrubber_control_selector_holo_dark</item>
     </style>
 
     <style name="Theme.Unbunker.NoActionBar" parent="Theme.Unbunker">
@@ -24,10 +33,12 @@
 
     <style name="ButtonUnBunker" parent="android:Widget.Holo.Light.Button">
         <item name="android:background">@drawable/unbunker_btn_default_holo_light</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="ImageButtonUnBunker" parent="android:Widget.Holo.Light.ImageButton">
         <item name="android:background">@drawable/unbunker_btn_default_holo_light</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="ActionBar.Solid.Unbunker" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">

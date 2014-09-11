@@ -17,7 +17,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,13 +37,16 @@
         android:text="1"
         android:id="@+id/presales_seeked_number"
         android:textSize="45dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
         android:layout_below="@+id/how_many_text"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"/>
 
 
     <SeekBar
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
         android:id="@+id/seekBar_presales"
         android:layout_below="@+id/presales_seeked_number"
