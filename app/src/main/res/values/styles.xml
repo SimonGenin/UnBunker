@@ -1,9 +1,77 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light">
-        <!-- Customize your theme here. -->
+   <style name="Theme.Unbunker" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_unbunker</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Unbunker</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Unbunker</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Unbunker</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Unbunker</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Unbunker</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_unbunker</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_unbunker</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Unbunker</item>
 
+       <item name="android:editTextBackground">@drawable/unbunker_edit_text_holo_light</item>
+       <item name="android:buttonStyle">@style/ButtonUnBunker</item>
+       <item name="android:imageButtonStyle">@style/ImageButtonUnBunker</item>
+
+    </style>
+
+    <style name="Theme.Unbunker.NoActionBar" parent="Theme.Unbunker">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="ButtonUnBunker" parent="android:Widget.Holo.Light.Button">
+        <item name="android:background">@drawable/unbunker_btn_default_holo_light</item>
+    </style>
+
+    <style name="ImageButtonUnBunker" parent="android:Widget.Holo.Light.ImageButton">
+        <item name="android:background">@drawable/unbunker_btn_default_holo_light</item>
+    </style>
+
+    <style name="ActionBar.Solid.Unbunker" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:background">@drawable/ab_solid_unbunker</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_unbunker</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_unbunker</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Unbunker</item>
+    </style>
+
+    <style name="ActionBar.Transparent.Unbunker" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_unbunker</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Unbunker</item>
+    </style>
+
+    <style name="PopupMenu.Unbunker" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_unbunker</item>
+    </style>
+
+    <style name="DropDownListView.Unbunker" parent="@android:style/Widget.Holo.Light.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_unbunker</item>
+    </style>
+
+    <style name="ActionBarTabStyle.Unbunker" parent="@android:style/Widget.Holo.Light.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_unbunker</item>
+    </style>
+
+    <style name="DropDownNav.Unbunker" parent="@android:style/Widget.Holo.Light.Spinner">
+        <item name="android:background">@drawable/spinner_background_ab_unbunker</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_unbunker</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_unbunker</item>
+    </style>
+
+    <style name="ProgressBar.Unbunker" parent="@android:style/Widget.Holo.Light.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_unbunker</item>
+    </style>
+
+    <style name="ActionButton.CloseMode.Unbunker" parent="@android:style/Widget.Holo.Light.ActionButton.CloseMode">
+        <item name="android:background">@drawable/btn_cab_done_unbunker</item>
+    </style>
+
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Unbunker.Widget" parent="@android:style/Theme.Holo">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Unbunker</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Unbunker</item>
     </style>
 
 </resources>

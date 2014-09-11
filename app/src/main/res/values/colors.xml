@@ -4,4 +4,10 @@
     <color name="light_red">#e84c3d</color>
     <color name="dark_grey">#ff2c2c2c</color>
 
+    <color name="dark_blue">#2b3d53</color>
+    <color name="light_blue">#01bbba</color>
+    <color name="white">#ffffff</color>
+    <color name="light_bule_darker">#01a6a2</color>
+    <color name="light_grey">#b3bac4</color>
+
 </resources>

@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +43,9 @@ public class LoginActivity extends Activity {
         nameEDT = (EditText) findViewById(R.id.name_edt);
         passwordEDT = (EditText) findViewById(R.id.mdp_edt);
         Button loginButton = (Button) findViewById(R.id.login_button);
+
+        passwordEDT.setTypeface(Typeface.DEFAULT);
+        passwordEDT.setTransformationMethod(new PasswordTransformationMethod());
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
