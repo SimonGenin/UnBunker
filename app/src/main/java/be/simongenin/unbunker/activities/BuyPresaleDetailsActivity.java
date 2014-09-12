@@ -162,10 +162,10 @@ public class BuyPresaleDetailsActivity extends Activity {
 
                         sendSMS(seller, seekBarPresale.getProgress());
 
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        Intent intent = new Intent(Intent.ACTION_SENDTO);
                         intent.setData(Uri.parse("sms:" + seller.getGsm()));
                         intent.putExtra("exit_on_sent", true);
-                        startActivity(intent);
+                        startActivityForResult(intent, 100);
 
                     }
 
@@ -177,9 +177,26 @@ public class BuyPresaleDetailsActivity extends Activity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // Sms envoyé
+        if (requestCode == 100) {
+            Intent intent = new Intent(this, BoughtActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+            overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top);
+
+        }
+
+    }
+
     /*
-        Ne fonctionne pas
-     */
+       TODO
+       Ne fonctionne pas
+    */
     private void sendSMS(User seller, int num) {
         String generatedMessage = "Message généré et envoyé par l'application UnBunker. Ce numéro ("+ UnBunkerApplication.user.getGsm()+") à acheté " + num + " prévente(s). Il devrait rentrer en contact avec vous. Sinon, n'hésiter pas à le faire, votre prévente n'étant maintenant plus en ligne.";
 
