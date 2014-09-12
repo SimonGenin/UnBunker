@@ -120,6 +120,8 @@ public class SellPresaleActivity extends Activity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
 
+                    overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top);
+
                 }
 
             }

@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.adapters.PresaleAdapter;
+import be.simongenin.unbunker.classes.Network;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;
 
@@ -32,6 +33,10 @@ public class BuyPresaleActivity extends ListActivity {
         intent.putExtra("USER", User.getUserById(Presale.getNotSoldPresales().get(position).getCompte_id()));
         intent.putExtra("PRESALE", Presale.getNotSoldPresales().get(position));
         startActivity(intent);
+
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+        Network.checkNetwork(this);
 
     }
 

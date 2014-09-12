@@ -1,11 +1,13 @@
 package be.simongenin.unbunker.classes;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.activities.NoNetworkAvailableActivity;
 
 public class Network {
@@ -18,6 +20,9 @@ public class Network {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
+
+            Activity activity = (Activity) context;
+            activity.overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top);
 
         }
 

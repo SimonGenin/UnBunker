@@ -48,6 +48,8 @@ public class MenuActivity extends Activity {
                 Intent intent = new Intent(MenuActivity.this, BuyPresaleActivity.class);
                 startActivity(intent);
 
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                 Network.checkNetwork(MenuActivity.this);
             }
         });
@@ -62,6 +64,8 @@ public class MenuActivity extends Activity {
 
                 Intent intent = new Intent(MenuActivity.this, SellPresaleActivity.class);
                 startActivity(intent);
+
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                 Network.checkNetwork(MenuActivity.this);
             }
@@ -78,6 +82,8 @@ public class MenuActivity extends Activity {
                 Bunker.fillBunkersListFromDataBase();
                 Intent intent = new Intent(MenuActivity.this, BunkersActivity.class);
                 startActivity(intent);
+
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                 Network.checkNetwork(MenuActivity.this);
             }
