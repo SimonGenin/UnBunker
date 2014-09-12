@@ -115,7 +115,7 @@ public class SellPresaleActivity extends Activity {
                         Toast.makeText(SellPresaleActivity.this, seekBarPresale.getProgress()  + " préventes vendues", Toast.LENGTH_LONG).show();
 
 
-                    Intent intent = new Intent(SellPresaleActivity.this, MenuActivity.class);
+                    Intent intent = new Intent(SellPresaleActivity.this, SoldActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);

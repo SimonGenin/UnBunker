@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:name=".UnBunkerApplication"
@@ -13,7 +14,7 @@
         android:theme="@style/Theme.Unbunker" >
         <activity
             android:name=".activities.MenuActivity"
-            android:label="Menu" >
+            android:label="UnBunker" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +23,8 @@
         </activity>
         <activity
             android:name=".activities.LoginActivity"
-            android:theme="@style/Theme.Unbunker.NoActionBar"
-            android:label="Connexion" >
+            android:label="Connexion"
+            android:theme="@style/Theme.Unbunker.NoActionBar" >
         </activity>
         <activity
             android:name=".activities.BunkersActivity"
@@ -51,7 +52,7 @@
         </activity>
         <activity
             android:name=".activities.BuyPresaleDetailsActivity"
-            android:label="Détails de l'achat"
+            android:label="Détails de l&apos;achat"
             android:parentActivityName=".activities.BuyPresaleActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -60,8 +61,17 @@
         <activity
             android:name=".activities.NoNetworkAvailableActivity"
             android:label="Connexion non disponnible"
-            android:theme="@style/Theme.Unbunker.NoActionBar"
-            >
+            android:theme="@style/Theme.Unbunker.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".activities.SoldActivity"
+            android:label="@string/title_activity_sold"
+            android:theme="@style/Theme.Unbunker.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activities.BoughtActivity"
+            android:label="@string/title_activity_bought"
+            android:theme="@style/Theme.Unbunker.NoActionBar">
         </activity>
     </application>
 

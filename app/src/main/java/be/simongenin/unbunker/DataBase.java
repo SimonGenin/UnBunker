@@ -13,13 +13,17 @@ import java.net.URL;
 
 public class DataBase {
 
+    // local
+    public static String BASE_URL = "http://10.0.3.2/unbunkerandroid/";
+
     public static JSONArray getData(String scriptName)  {
 
         int responseCode = -1;
         JSONArray jsr = null;
 
+
         try {
-            URL feedURL = new URL("http://10.0.3.2/unbunkerandroid/" + scriptName + ".php");
+            URL feedURL = new URL(BASE_URL + scriptName + ".php");
             HttpURLConnection connection = (HttpURLConnection) feedURL.openConnection();
             connection.connect();
 
@@ -50,7 +54,7 @@ public class DataBase {
         JSONObject jso = null;
 
         try {
-            URL feedURL = new URL("http://10.0.3.2/unbunkerandroid/" + url);
+            URL feedURL = new URL(BASE_URL + url);
             HttpURLConnection connection = (HttpURLConnection) feedURL.openConnection();
             connection.connect();
             responseCode = connection.getResponseCode();
@@ -87,7 +91,7 @@ public class DataBase {
         int responseCode = -1;
 
         try {
-            URL feedURL = new URL("http://10.0.3.2/unbunkerandroid/deleteAPresale.php?id=" + String.valueOf(id) + "&num=" + String.valueOf(number));
+            URL feedURL = new URL(BASE_URL + "deleteAPresale.php?id=" + String.valueOf(id) + "&num=" + String.valueOf(number));
             HttpURLConnection connection = (HttpURLConnection) feedURL.openConnection();
             connection.connect();
             responseCode = connection.getResponseCode();

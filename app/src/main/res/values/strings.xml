@@ -10,5 +10,7 @@
     <string name="title_activity_sell_presale">Vendre</string>
     <string name="title_activity_buy_presale_details">BuyPresaleDetailsActivity</string>
     <string name="title_activity_no_network_available">Connexion</string>
+    <string name="title_activity_sold">Prévente vendue</string>
+    <string name="title_activity_bought">BoughtActivity</string>
 
 </resources>

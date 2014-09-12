@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import be.simongenin.unbunker.DataBase;
 import be.simongenin.unbunker.R;
+import be.simongenin.unbunker.UnBunkerApplication;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;
 
@@ -31,7 +32,7 @@ public class BuyPresaleDetailsActivity extends Activity {
 
         // Get the intent
         Intent gottenIntent = getIntent();
-        User seller = (User) gottenIntent.getSerializableExtra("USER");
+        final User seller = (User) gottenIntent.getSerializableExtra("USER");
         pre = (Presale) gottenIntent.getSerializableExtra("PRESALE");
 
         // Met le nom du vendeur
@@ -158,10 +159,14 @@ public class BuyPresaleDetailsActivity extends Activity {
                         else
                             Toast.makeText(BuyPresaleDetailsActivity.this, "Prévente achetée", Toast.LENGTH_LONG).show();
 
-                        Intent intent = new Intent(BuyPresaleDetailsActivity.this, MenuActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                        sendSMS(seller, seekBarPresale.getProgress());
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("sms:" + seller.getGsm()));
+                        intent.putExtra("exit_on_sent", true);
                         startActivity(intent);
+
                     }
 
 
@@ -170,6 +175,18 @@ public class BuyPresaleDetailsActivity extends Activity {
 
         }
 
+    }
+
+    /*
+        Ne fonctionne pas
+     */
+    private void sendSMS(User seller, int num) {
+        String generatedMessage = "Message généré et envoyé par l'application UnBunker. Ce numéro ("+ UnBunkerApplication.user.getGsm()+") à acheté " + num + " prévente(s). Il devrait rentrer en contact avec vous. Sinon, n'hésiter pas à le faire, votre prévente n'étant maintenant plus en ligne.";
+
+        SmsManager sm = SmsManager.getDefault();
+        String number = seller.getGsm();
+        String msg = generatedMessage;
+        sm.sendTextMessage(number, null, msg, null, null);
     }
 
     private void unexistingPresaleDialog() {
