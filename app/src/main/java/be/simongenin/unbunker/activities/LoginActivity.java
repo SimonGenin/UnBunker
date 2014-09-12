@@ -10,6 +10,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.UnBunkerApplication;
@@ -35,6 +36,15 @@ public class LoginActivity extends Activity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
+
+        TextView signUpText = (TextView) findViewById(R.id.signup_text);
+        signUpText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignUpOnInternetActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // init
         nicknameEDT = (EditText) findViewById(R.id.nickname_edt);

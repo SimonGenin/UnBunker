@@ -66,12 +66,20 @@
         <activity
             android:name=".activities.SoldActivity"
             android:label="@string/title_activity_sold"
-            android:theme="@style/Theme.Unbunker.NoActionBar">
+            android:theme="@style/Theme.Unbunker.NoActionBar" >
         </activity>
         <activity
             android:name=".activities.BoughtActivity"
             android:label="@string/title_activity_bought"
-            android:theme="@style/Theme.Unbunker.NoActionBar">
+            android:theme="@style/Theme.Unbunker.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".activities.SignUpOnInternetActivity"
+            android:label="@string/title_activity_sign_up_on_internet"
+            android:parentActivityName=".activities.LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.LoginActivity" />
         </activity>
     </application>
 

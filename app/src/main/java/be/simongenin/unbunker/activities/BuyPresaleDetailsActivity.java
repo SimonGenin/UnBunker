@@ -199,7 +199,7 @@ public class BuyPresaleDetailsActivity extends Activity {
     */
     private void sendSMS(User seller, int num) {
         String generatedMessage = "Message généré et envoyé par l'application UnBunker. Ce numéro ("+ UnBunkerApplication.user.getGsm()+") à acheté " + num + " prévente(s). Il devrait rentrer en contact avec vous. Sinon, n'hésiter pas à le faire, votre prévente n'étant maintenant plus en ligne.";
-
+        generatedMessage = "Coucou";
         SmsManager sm = SmsManager.getDefault();
         String number = seller.getGsm();
         String msg = generatedMessage;
@@ -219,10 +219,9 @@ public class BuyPresaleDetailsActivity extends Activity {
                 startActivity(intent);
             }
         });
+
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-
 
 }
