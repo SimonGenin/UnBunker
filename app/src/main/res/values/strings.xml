@@ -19,5 +19,6 @@
     <string name="title_activity_help_bug_report">Comment reporter un bug</string>
     <string name="title_activity_help_person_report">Comment reporter une personne</string>
     <string name="title_activity_help_credits">Crédits</string>
+    <string name="bug_message_warn">Si vous êtes témoin d\'un bug quelconque, faite le nous savoir ! Cela nous aide beaucoup, car malgré tout les tests possibles que nous faisons avant de rendre l\'application publique, de nombreuses choses nous échappent.</string>
 
 </resources>

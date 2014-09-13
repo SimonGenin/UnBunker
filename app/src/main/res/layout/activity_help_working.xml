@@ -1,4 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,4 +21,91 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/gear"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Achat de préventes"
+        android:id="@+id/textView"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pour acheter une prévente, cliquez sur 'Acheter une prévente' dans le menu. Une fois fait, vous devriez voir une liste de toutes les préventes actuellement disponible. Sachez que cette liste est rafraichie lors du passage entre le menu et cette liste. Si vous restez longtemps sur la page sans rien faire, il se peut que lorsque vous tenterez de cliquer sur l'une d'elle, vous aurez un message vous annonçant qu'elle à déjà été vendue. Chaque élément de cette liste contient soit 3 ou soit 4 informations. Le nom du vendeur, le temps depuis lequel la prévente à été mise en ligne et le nombre de préventes en vente. Il peut arriver que un petit carré de couleur indique que la personne est soit un administrateur, un développeur ou plus souvent un utilisateur prioritaire (voir plus bas pour informations). Si vous cliquez sur l'une des préventes, vous verrez apparaitre les détails de votre achat/réservation. Vous devrez simplement indiquer le nombre de prévente à acheter. Il se peut en effet que vous en preniez pour vos amis en même temps. SOYEZ SUR DE CE QUE VOUS FAITES ! Une fois le bouton acheter cliqué, la prévente à été achetée, vous ne pouvez plus annuler. Vous êtes donc redirigé vers un envoi de sms avec le numéro du vendeur rentré comme destinataire. Vous n'avez plus qu'à arranger un échange en étant sur que vous possédez vos prévente. Si vous n'envoyez pas de sms alors que vous avez acheté des préventes, vous vous présentez au risque d'être banni. Si vous faite un achat accidentel, pensez donc à prévenir le vendeur de votre erreur à la place d'organiser l'échange afin que cette personne puisse les remettre en vente."
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vente de préventes"
+        android:id="@+id/textView3"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pour vendre une prévente, cliquez sur 'Vendre une prévente' dans le menu. Vous arriverez sur une page vous demandant combien de préventes vous souhaitez vendre, et vous rappel pour quel bunker sont ces préventes. Cliquez sur 'Vendre plus ? Clique ici.' si vous voulez vendre plus de 5 ou 10 préventes. Une fois le bouton vendre cliqué, tout comme l'achat de prévente, vous ne pouvez plus revenir en arrière, vos prés sont en vente. En cas de vente accidentelle, pensez à vite aller les racheter vous même, avant que quelqu'un d'autre ne le fasse. Si cela survient, répondez simplement que c'était une erreur mais ne laissez pas un vent... L'acheteur ne saura s'il doit acheter un autre ou attendre. Vous vous exposé à un possible bannissement dans ces cas là."
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bonnes pratiques"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Suivez ces quelques conseils afin de profiter au mieux du service : achetez si vous êtes sur de vouloir acheter. Et de même, vendez si vous êtes sur de vouloir vendre. Si vous êtes un vendeur, garder votre téléphone près de vous ! Vous devez répondre rapidement aux acheteurs, où ils iront acheter une autre. Ce qui créera des problèmes pour vous vendeur. Dernier détails primordial : UTILISEZ UNBUNKER VERSION ANDROID UNIQUEMENT SI VOUS AVEZ DU CREDIT SMS. Si ce n'est pas le cas, vous ne saurez plus envoyer ou répondre au sms. Vous pourriez être reporté et banni. Sur ce, bonnes soirées !"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Personnes prioritaires"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:text="Ces personnes possèdent une petite vignette de couleur mauve sous leurs préventes. Leurs préventes resteront au sommet de la liste, quelque soit le temps depuis lequel leurs préventes sont en lignes. Seul les administrateurs (Timoté Fallais, Simon Genin) peuvent rendre quelqu'un 'prioritaire'. Vous pouvez cependant le devenir en nous aidant en nous reportant les bugs que vous voyez. Lisez la partie 'comment reporter un bug' de la section d'aide pour en savoir plus."
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
 </RelativeLayout>
+
+</ScrollView>

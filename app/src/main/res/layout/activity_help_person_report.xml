@@ -1,4 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,7 +11,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="be.simongenin.unbunker.activities.HelpPersonReportActivity">
+    tools:context="be.simongenin.unbunker.activities.HelpPersonReportActivity"
+    >
 
 
     <ImageView
@@ -16,4 +22,72 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/forbidden"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pourquoi reporter ?"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cette application repose en partie sur le fait que les utilisateurs doivent l'utiliser de manière sérieuse. En effet, si quelqu'un achete toute les préventes sans envoyer de messages aux vendeurs 'parce qu'il trouve ça comique', tout le système se retrouve dérangé. Ces personnes la doivent donc être tout simplement bannies, afin de garder un service convenable."
+        android:id="@+id/textView"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quelqu'un achète mes préventes mais je ne sais pas qui. Comment le reporter ?"
+        android:id="@+id/textView3"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sachez que nous gardons un historique de toutes les transactions. Vous pouvez simplement reporter le problème en nous spécifiant qui vous êtes et quelles préventes sont concernées. Nous retrouverons donc l'acheteur et prendrons les mesures nécessaires."
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comment reporter ?"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aller simplement dans la partie contact, et envoyer nous un mail, expliquant le problème. Pensez également à mettre en évidence dans le sujet du mail qu'il s'agit d'un report. Notre réaction sera plus rapide, car ces personnes nuisent fortement à l'application."
+        android:id="@+id/textView6"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
 </RelativeLayout>
+
+</ScrollView>
