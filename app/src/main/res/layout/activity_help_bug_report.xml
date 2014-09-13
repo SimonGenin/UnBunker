@@ -59,7 +59,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rien de plus simple ! Vous n'avez qu'à aller dans la partie de contact et nous envoyer un mail. Pensez à mettre dans le sujet que votre message contient un report de bug. Nous y porterons attention plus rapidemment."
+        android:text="Rien de plus simple ! Vous n'avez qu'à aller dans la partie de contact et nous envoyer un mail. Pensez à mettre dans le sujet que votre message contient un report de bug. Nous y porterons attention plus rapidemment. Pensez également à bien détailler ce qui arrive et comment est-ce arrivé."
         android:id="@+id/textView4"
         android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
@@ -80,7 +80,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nous vous remercions si vous réalisé cette démarche. Sachez que cela nous aide énormément. De plus, au plus vous nous signaler les bugs, au plus l'application que vous utilisez devient stable et performante."
+        android:text="Nous vous remercions si vous réalisez cette démarche. Sachez que cela nous aide énormément. De plus, au plus vous nous signaler les bugs, au plus l'application que vous utilisez devient stable et performante."
         android:id="@+id/textView6"
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"

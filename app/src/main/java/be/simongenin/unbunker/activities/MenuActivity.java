@@ -52,8 +52,8 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Presale.fillPresalesListFromDataBase();
                 User.fillUsersListFromDataBase();
+                Presale.fillPresalesListFromDataBase();
                 Intent intent = new Intent(MenuActivity.this, BuyPresaleActivity.class);
                 startActivity(intent);
 

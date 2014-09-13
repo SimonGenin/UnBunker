@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import be.simongenin.unbunker.R;
 
-public class HelpCredits extends Activity {
+public class HelpCreditsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

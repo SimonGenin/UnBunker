@@ -80,6 +80,54 @@ public class Presale implements Serializable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        // Changer l'ordre des preventes en fonction des roles
+        ArrayList<Presale> newPresales = changeOrderForRoles(presales);
+        presales.clear();
+        presales = newPresales;
+
+    }
+
+    private static ArrayList<Presale> changeOrderForRoles(ArrayList<Presale> pres) {
+
+        ArrayList<Presale> newPresales = new ArrayList<Presale>();
+
+        for (Presale pre : pres) {
+            User u = User.getUserById(pre.getCompte_id());
+            if (u.getRole() == User.ROLE_ADMIN_AND_DEV) {
+                newPresales.add(pre);
+            }
+        }
+
+        for (Presale pre : pres) {
+            User u = User.getUserById(pre.getCompte_id());
+            if (u.getRole() == User.ROLE_ADMIN) {
+                newPresales.add(pre);
+            }
+        }
+
+        for (Presale pre : pres) {
+            User u = User.getUserById(pre.getCompte_id());
+            if (u.getRole() == User.ROLE_DEV) {
+                newPresales.add(pre);
+            }
+        }
+
+        for (Presale pre : pres) {
+            User u = User.getUserById(pre.getCompte_id());
+            if (u.getRole() == User.ROLE_PRIORITAIRE) {
+                newPresales.add(pre);
+            }
+        }
+
+        for (Presale pre : pres) {
+            User u = User.getUserById(pre.getCompte_id());
+            if (u.hasNoRole()) {
+                newPresales.add(pre);
+            }
+        }
+
+        return newPresales;
     }
 
     public static Presale getOnePresaleByIdFromDataBase(final int id) {

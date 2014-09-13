@@ -131,6 +131,14 @@ public class User implements Serializable {
 
     }
 
+    public boolean hasNoRole() {
+
+        if (this.role != ROLE_ADMIN_AND_DEV && this.role != ROLE_ADMIN && this.role != ROLE_DEV && this.role != ROLE_PRIORITAIRE)
+            return true;
+        return false;
+
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -229,4 +237,5 @@ public class User implements Serializable {
     public int getRole() {
         return role;
     }
+
 }

@@ -114,7 +114,7 @@
                 android:value="be.simongenin.unbunker.activities.HelpActivity" />
         </activity>
         <activity
-            android:name=".activities.HelpCredits"
+            android:name=".activities.HelpCreditsActivity"
             android:label="@string/title_activity_help_credits"
             android:parentActivityName=".activities.HelpActivity" >
             <meta-data

@@ -53,7 +53,7 @@ public class HelpActivity extends ListActivity {
                 startActivity(intentReport);
                 break;
             case OPTION_CREDITS :
-                Intent intentCredits = new Intent(this, HelpCredits.class);
+                Intent intentCredits = new Intent(this, HelpCreditsActivity.class);
                 startActivity(intentCredits);
                 break;
 
