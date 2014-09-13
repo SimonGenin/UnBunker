@@ -81,6 +81,46 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="be.simongenin.unbunker.activities.LoginActivity" />
         </activity>
+        <activity
+            android:name=".activities.HelpActivity"
+            android:label="@string/title_activity_help"
+            android:parentActivityName=".activities.MenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".activities.HelpWorkingActivity"
+            android:label="@string/title_activity_help_working"
+            android:parentActivityName=".activities.HelpActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.HelpActivity" />
+        </activity>
+        <activity
+            android:name=".activities.HelpBugReportActivity"
+            android:label="@string/title_activity_help_bug_report"
+            android:parentActivityName=".activities.HelpActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.HelpActivity" />
+        </activity>
+        <activity
+            android:name=".activities.HelpPersonReportActivity"
+            android:label="@string/title_activity_help_person_report"
+            android:parentActivityName=".activities.HelpActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.HelpActivity" />
+        </activity>
+        <activity
+            android:name=".activities.HelpCredits"
+            android:label="@string/title_activity_help_credits"
+            android:parentActivityName=".activities.HelpActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.HelpActivity" />
+        </activity>
     </application>
 
 </manifest>

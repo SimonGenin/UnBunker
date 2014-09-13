@@ -59,6 +59,27 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\?"
+        android:id="@+id/question_txtView"
+        android:textSize="30dp"
+        android:background="@drawable/question_bg"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+
+        android:padding="15dp"
+        android:minWidth="60dp"
+
+
+        />
+
 
 
 </RelativeLayout>

@@ -14,6 +14,10 @@
     <string name="title_activity_bought">BoughtActivity</string>
     <string name="title_activity_sign_up_on_internet">SignUpOnInternet</string>
     <string name="sign_up_message_explanation">La création d\'un compte demandant une vérification sms géré par notre site web, l\'application ne permet pas encore de créer un nouveau compte directement depuis celle ci. Nous vous invitons dans ce cas à poursuivre votre inscription sur le web. Une fois votre code de vérification rentré, vous serez en mesure d\'utiliser l\'application.</string>
-
+    <string name="title_activity_help">Aide</string>
+    <string name="title_activity_help_working">Fonctionnement</string>
+    <string name="title_activity_help_bug_report">Comment reporter un bug</string>
+    <string name="title_activity_help_person_report">Comment reporter une personne</string>
+    <string name="title_activity_help_credits">Crédits</string>
 
 </resources>

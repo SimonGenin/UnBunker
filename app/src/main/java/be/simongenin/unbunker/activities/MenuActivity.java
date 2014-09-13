@@ -31,6 +31,15 @@ public class MenuActivity extends Activity {
         final TextView textTest = (TextView) findViewById(R.id.textText);
         textTest.setText(UnBunkerApplication.user.getNickname() + " est connecté");
 
+        // Question
+        TextView questionMark = (TextView) findViewById(R.id.question_txtView);
+        questionMark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, HelpActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Si pas connecté, renvoi vers la page de connexion
         redirectToLoginIfNeeded();
