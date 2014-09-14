@@ -1,0 +1,34 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E-Mail"
+        android:id="@+id/contact_email_send"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:background="@drawable/send_plateform"
+        android:minWidth="180dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMS"
+        android:id="@+id/contact_sms_send"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:background="@drawable/send_plateform"
+        android:minWidth="180dp"
+        />
+
+</LinearLayout>

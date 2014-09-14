@@ -121,6 +121,27 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="be.simongenin.unbunker.activities.HelpActivity" />
         </activity>
+        <activity
+            android:name=".activities.ContactTypeMessageActivity"
+            android:label="@string/title_activity_contact"
+            android:parentActivityName=".activities.MenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".activities.ContactSendActivity"
+            android:label="@string/title_activity_contact_send"
+            android:parentActivityName=".activities.ContactTypeMessageActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.ContactTypeMessageActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SentActivity"
+            android:label="@string/title_activity_sent"
+            android:theme="@style/Theme.Unbunker.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

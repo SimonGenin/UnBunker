@@ -15,9 +15,18 @@
        <item name="android:buttonStyle">@style/ButtonUnBunker</item>
        <item name="android:imageButtonStyle">@style/ImageButtonUnBunker</item>
        <item name="android:seekBarStyle">@style/SeekBarUnBunker</item>
+       <item name="android:listChoiceIndicatorMultiple">@drawable/unbunker_btn_check_holo_dark</item>
+       <item name="android:listChoiceIndicatorSingle">@drawable/unbunker_btn_radio_holo_dark</item>
+       <item name="android:progressBarStyleHorizontal">@style/ProgressBarUnBunker</item>
 
        <item name="android:windowBackground">@color/dark_blue</item>
 
+
+   </style>
+
+    <style name="ProgressBarUnBunker" parent="android:Widget.Holo.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/unbunker_progress_horizontal_holo_dark</item>
+        <item name="android:indeterminateDrawable">@drawable/unbunker_progress_indeterminate_horizontal_holo_dark</item>
     </style>
 
     <style name="SeekBarUnBunker" parent="android:Widget.Holo.SeekBar">
