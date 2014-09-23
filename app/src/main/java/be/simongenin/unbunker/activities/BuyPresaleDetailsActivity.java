@@ -160,7 +160,7 @@ public class BuyPresaleDetailsActivity extends Activity {
                             Toast.makeText(BuyPresaleDetailsActivity.this, "Prévente achetée", Toast.LENGTH_LONG).show();
 
 
-                        sendSMS(seller, seekBarPresale.getProgress());
+                        // sendSMS(seller, seekBarPresale.getProgress());
 
                         Intent intent = new Intent(Intent.ACTION_SENDTO);
                         intent.setData(Uri.parse("sms:" + seller.getGsm()));
@@ -199,7 +199,6 @@ public class BuyPresaleDetailsActivity extends Activity {
     */
     private void sendSMS(User seller, int num) {
         String generatedMessage = "Message généré et envoyé par l'application UnBunker. Ce numéro ("+ UnBunkerApplication.user.getGsm()+") à acheté " + num + " prévente(s). Il devrait rentrer en contact avec vous. Sinon, n'hésiter pas à le faire, votre prévente n'étant maintenant plus en ligne.";
-        generatedMessage = "Coucou";
         SmsManager sm = SmsManager.getDefault();
         String number = seller.getGsm();
         String msg = generatedMessage;

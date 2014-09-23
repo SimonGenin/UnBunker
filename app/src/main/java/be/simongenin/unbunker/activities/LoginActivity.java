@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.UnBunkerApplication;
+import be.simongenin.unbunker.classes.Encryption;
 import be.simongenin.unbunker.classes.Network;
 import be.simongenin.unbunker.classes.User;
 
@@ -142,9 +143,16 @@ public class LoginActivity extends Activity {
 
         User.fillUsersListFromDataBase();
 
+        p = Encryption.encryptPassword(p);
+
+        // Si erreur pendant le cryptage
+        if (p == null) {
+            encryptionError();
+            return false;
+        }
+
         for (User user : User.users) {
             if (user.getNickname().equals(nkn) && user.getName().equals(n) && user.getPassword().equals(p)) {
-
                 UnBunkerApplication.user = user;
                 UnBunkerApplication.user.connect();
                 return true;
@@ -153,6 +161,15 @@ public class LoginActivity extends Activity {
 
         return false;
 
+    }
+
+    private void encryptionError() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Erreur");
+        builder.setMessage("Il semblerait que votre connection soit impossible dû à une erreur de sécuritée.");
+        builder.setPositiveButton(android.R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     /*

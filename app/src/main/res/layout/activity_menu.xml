@@ -9,40 +9,82 @@
     tools:context=".MenuActivity"
     >
 
-    <TextView
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="UnBunker"
-        android:id="@+id/copyright"
-        android:layout_alignParentTop="true"
+        android:id="@+id/v_layout"
+        android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:textSize="40sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        />
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/ic_launcher"
+            android:layout_marginRight="5dp"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bunker"
+                android:id="@+id/title_main"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="40sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Last Minute"
+                android:id="@+id/title_last_minute"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="-10dp"
+                android:gravity="right"
+
+                />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ALPHA DEV"
-        android:id="@+id/textView"
-        android:layout_below="@+id/copyright"
-        android:layout_alignRight="@+id/copyright"
-        android:layout_alignEnd="@+id/copyright"
-        android:textColor="@color/white"
+        android:id="@+id/version"
+        android:layout_below="@+id/v_layout"
+        android:layout_alignRight="@+id/v_layout"
+        android:layout_alignEnd="@+id/v_layout"
+        android:textColor="@color/light_red"
         android:textStyle="bold"
         android:textSize="10sp"
-        android:layout_marginTop="-8dp"
-
-
         />
+
+
+
+
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Acheter une prévente"
         android:id="@+id/buy_presale_button"
-        android:layout_below="@+id/copyright"
+        android:layout_below="@+id/v_layout"
         android:layout_marginTop="50dp"
         />
 

@@ -118,7 +118,7 @@ public class User implements Serializable {
 
                     JSONObject user = jsr.getJSONObject(i);
 
-                    users.add(new User(user.getInt("Id"), user.getString("Nom"), user.getString("Prenom"),user.getString("Pass"), user.getString("Email"), user.getString("Gsm"), user.getString("Date_Inscription"), user.getInt("Etat"), user.getInt("role")));
+                    users.add(new User(user.getInt("Id"), user.getString("Nom"), user.getString("Prenom"),user.getString("Pass"), user.getString("Email"), user.getString("Gsm"), user.getString("Date_Inscription"), user.getInt("Etat"), user.getInt("Role")));
 
                 }
 
