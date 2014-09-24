@@ -75,4 +75,27 @@ public class DateHandler {
 
     }
 
+    public static String getTimeLeftBeforeNextOpening() {
+
+        Bunker nextBunker = Bunker.getNextBunker();
+        Date dateBunker = DateHandler.fromSringDateYMDToDate(nextBunker.getDate());
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBunker);
+        cal.add(Calendar.HOUR_OF_DAY, -12);
+        Date dateOpen = cal.getTime();
+
+        Date now = new Date();
+
+        float diff = (dateOpen.getTime() - now.getTime()) / 3600000;
+        if (diff < 1) {
+            diff *= 60;
+            if (diff < 1)
+                return "quelques secondes";
+             else
+                return (int)diff + " minute(s)";
+        } else {
+            return (int)diff + " heure(s)";
+        }
+
+    }
 }

@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import be.simongenin.unbunker.R;
+import be.simongenin.unbunker.classes.DateHandler;
 import be.simongenin.unbunker.classes.Network;
 
 public class WaitForTimeActivity extends Activity {
@@ -15,6 +17,12 @@ public class WaitForTimeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wait_for_time);
+
+        TextView timeLeft = (TextView) findViewById(R.id.time_left);
+
+        String time = DateHandler.getTimeLeftBeforeNextOpening();
+
+        timeLeft.setText("Encore " + time);
 
         Button returnMenu = (Button) findViewById(R.id.return_menu);
         returnMenu.setOnClickListener(new View.OnClickListener() {
