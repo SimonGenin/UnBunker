@@ -14,6 +14,7 @@ import android.widget.Toast;
 import be.simongenin.unbunker.DataBase;
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.UnBunkerApplication;
+import be.simongenin.unbunker.classes.Bunker;
 
 public class SellPresaleActivity extends Activity {
 
@@ -23,6 +24,9 @@ public class SellPresaleActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_presale);
+
+        TextView bunkerName = (TextView) findViewById(R.id.bunker_name_text);
+        bunkerName.setText("Bunker " + Bunker.getNextBunker().getName() );
 
         final TextView seekedPresalesNumber = (TextView) findViewById(R.id.presales_seeked_number);
         seekedPresalesNumber.setText("1");

@@ -21,17 +21,59 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/winner"/>
 
-    <TextView
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="UnBunker"
-        android:id="@+id/textView"
-        android:layout_below="@+id/imageView"
+        android:id="@+id/v_layout"
+        android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"/>
+        android:layout_below="@id/imageView"
+        android:layout_marginTop="25dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgview"
+            android:src="@drawable/ic_launcher"
+            android:layout_marginRight="5dp"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bunker"
+                android:id="@+id/title_main"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="40sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Last Minute"
+                android:id="@+id/title_last_minute"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="-10dp"
+                android:gravity="right"
+
+                />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,9 +82,9 @@
         android:id="@+id/textView2"
         android:textColor="@color/white"
         android:textSize="10dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"/>
+        android:layout_below="@+id/v_layout"
+        android:layout_alignRight="@id/v_layout"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,7 +110,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="designé par Arnaud Baes"
+        android:text="design par Arnaud Baes"
         android:id="@+id/textView5"
         android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
@@ -89,7 +131,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="développé et designé par Simon Genin"
+        android:text="développé et design par Simon Genin"
         android:id="@+id/textView7"
         android:layout_below="@+id/textView6"
         android:layout_alignParentLeft="true"
@@ -110,7 +152,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="logo sous android : Carl Henry"
+        android:text="logo utilisé sur android par Carl Henry"
         android:id="@+id/textView9"
         android:layout_below="@+id/textView8"
         android:layout_alignParentLeft="true"

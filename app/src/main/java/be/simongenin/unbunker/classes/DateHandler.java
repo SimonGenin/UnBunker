@@ -5,6 +5,7 @@ import org.ocpsoft.prettytime.PrettyTime;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateHandler {
@@ -42,6 +43,36 @@ public class DateHandler {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Date fromSringDateYMDToDate(String s) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = sdf.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    // PRE : Il y a un prochain bunker
+    public static boolean isTimeToSellAndBuyYet() {
+        Date now = new Date();
+        Bunker nextBunker = Bunker.getNextBunker();
+        Date dateBunker = DateHandler.fromSringDateYMDToDate(nextBunker.getDate());
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateBunker);
+        cal.add(Calendar.HOUR_OF_DAY, -12);
+        Date goodDate = cal.getTime();
+
+        if (goodDate.before(now)) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 }

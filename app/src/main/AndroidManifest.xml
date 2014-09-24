@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:name=".UnBunkerApplication"
@@ -75,7 +74,7 @@
         </activity>
         <activity
             android:name=".activities.SignUpOnInternetActivity"
-            android:label="@string/title_activity_sign_up_on_internet"
+            android:label="Créer un compte en ligne"
             android:parentActivityName=".activities.LoginActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -140,6 +139,16 @@
         <activity
             android:name=".activities.SentActivity"
             android:label="@string/title_activity_sent"
+            android:theme="@style/Theme.Unbunker.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".activities.WaitForTimeActivity"
+            android:label="@string/title_activity_wait_for_time"
+            android:theme="@style/Theme.Unbunker.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activities.NoMoreBunkersActivity"
+            android:label="@string/title_activity_no_more_bunkers"
             android:theme="@style/Theme.Unbunker.NoActionBar">
         </activity>
     </application>

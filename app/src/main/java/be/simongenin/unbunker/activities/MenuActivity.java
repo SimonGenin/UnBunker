@@ -13,6 +13,7 @@ import android.widget.TextView;
 import be.simongenin.unbunker.R;
 import be.simongenin.unbunker.UnBunkerApplication;
 import be.simongenin.unbunker.classes.Bunker;
+import be.simongenin.unbunker.classes.DateHandler;
 import be.simongenin.unbunker.classes.Network;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;
@@ -27,9 +28,9 @@ public class MenuActivity extends Activity {
 
         Network.checkNetwork(MenuActivity.this);
 
-        // TEST
-        final TextView textTest = (TextView) findViewById(R.id.textText);
-        textTest.setText(UnBunkerApplication.user.getNickname() + " est connecté");
+        // User name
+        final TextView userName = (TextView) findViewById(R.id.user_name);
+        userName.setText(UnBunkerApplication.user.getNickname() + " est connecté");
 
         // Question
         TextView questionMark = (TextView) findViewById(R.id.question_txtView);
@@ -52,14 +53,21 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                User.fillUsersListFromDataBase();
-                Presale.fillPresalesListFromDataBase();
-                Intent intent = new Intent(MenuActivity.this, BuyPresaleActivity.class);
-                startActivity(intent);
+                if (AreBunkersLeft()) {
 
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    if (isItTimeYet()) {
 
-                Network.checkNetwork(MenuActivity.this);
+                        User.fillUsersListFromDataBase();
+                        Presale.fillPresalesListFromDataBase();
+                        Intent intent = new Intent(MenuActivity.this, BuyPresaleActivity.class);
+                        startActivity(intent);
+
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                        Network.checkNetwork(MenuActivity.this);
+                    }
+
+                }
             }
         });
 
@@ -71,12 +79,25 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MenuActivity.this, SellPresaleActivity.class);
-                startActivity(intent);
+                if (AreBunkersLeft()) {
 
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    if (isItTimeYet()) {
 
-                Network.checkNetwork(MenuActivity.this);
+                        if (Bunker.bunkers.isEmpty()) {
+                            Bunker.fillBunkersListFromDataBase();
+                        }
+
+                        Intent intent = new Intent(MenuActivity.this, SellPresaleActivity.class);
+                        startActivity(intent);
+
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                        Network.checkNetwork(MenuActivity.this);
+                    }
+
+
+                }
+
             }
         });
 
@@ -88,7 +109,10 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Bunker.fillBunkersListFromDataBase();
+                if (Bunker.bunkers.isEmpty()) {
+                    Bunker.fillBunkersListFromDataBase();
+                }
+
                 Intent intent = new Intent(MenuActivity.this, BunkersActivity.class);
                 startActivity(intent);
 
@@ -163,4 +187,35 @@ public class MenuActivity extends Activity {
         editor.apply();
 
     }
+
+    private boolean AreBunkersLeft() {
+
+        if (Bunker.bunkers.isEmpty()) {
+            Bunker.fillBunkersListFromDataBase();
+        }
+
+        if (Bunker.getNextBunker() == null) {
+            Intent intent = new Intent(this, NoMoreBunkersActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isItTimeYet() {
+
+        if (!DateHandler.isTimeToSellAndBuyYet()) {
+            Intent intent = new Intent(this, WaitForTimeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            return false;
+        }
+
+        return true;
+
+    }
+
 }

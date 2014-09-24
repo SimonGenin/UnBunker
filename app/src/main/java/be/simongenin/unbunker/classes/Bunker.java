@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import be.simongenin.unbunker.DataBase;
 
@@ -41,6 +42,24 @@ public class Bunker {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    // Renvoi le prochain bunker qui aura lieu
+    // null si rien
+    public static Bunker getNextBunker() {
+
+        // Date presente
+        Date now = new Date();
+
+        for (Bunker bunker : bunkers) {
+            Date bunkerDate = DateHandler.fromSringDateYMDToDate(bunker.getDate());
+
+            if (!now.after(bunkerDate)) {
+                return bunker;
+            }
+        }
+
+        return null;
     }
 
     private static void fillBunkers(JSONArray jsr) {

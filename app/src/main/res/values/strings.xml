@@ -24,5 +24,7 @@
     <string name="title_activity_contact_message">Message</string>
     <string name="title_activity_contact_send">E-Mail / SMS</string>
     <string name="title_activity_sent">SentActivity</string>
+    <string name="title_activity_wait_for_time">WaitForTime</string>
+    <string name="title_activity_no_more_bunkers">NoMoreBunkersActivity</string>
 
 </resources>
