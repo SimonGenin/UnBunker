@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ public class SellPresaleActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_sell_presale);
 
         TextView bunkerName = (TextView) findViewById(R.id.bunker_name_text);
@@ -78,13 +80,16 @@ public class SellPresaleActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+
                 Thread t = new Thread(new Runnable() {
                     @Override
                     public void run() {
+
                         error = DataBase.createPresale(UnBunkerApplication.user.getId(), getBunkerId(), seekBarPresale.getProgress());
                     }
                 });
 
+                setProgressBarIndeterminateVisibility(true);
                 t.start();
 
                 try {
@@ -93,8 +98,10 @@ public class SellPresaleActivity extends Activity {
                     e.printStackTrace();
                 }
 
+                setProgressBarIndeterminateVisibility(false);
 
                 if (error) {
+
                     AlertDialog.Builder builder = new AlertDialog.Builder(SellPresaleActivity.this);
                     builder.setTitle("Une erreur est survenue.");
                     builder.setMessage("Il semblerait que votre prévente n'ai pas été mise en vente. Vérifier cela dans la liste d'achat.");
@@ -135,7 +142,8 @@ public class SellPresaleActivity extends Activity {
 
     private int getBunkerId() {
 
-        return 3;
+        Bunker bunker = Bunker.getNextBunker();
+        return bunker.getId();
 
     }
 

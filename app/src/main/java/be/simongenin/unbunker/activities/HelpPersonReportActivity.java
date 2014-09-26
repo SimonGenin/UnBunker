@@ -13,6 +13,4 @@ public class HelpPersonReportActivity extends Activity {
         setContentView(R.layout.activity_help_person_report);
     }
 
-
-
 }

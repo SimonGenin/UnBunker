@@ -6,8 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import be.simongenin.unbunker.DataBase;
 import be.simongenin.unbunker.R;
-import be.simongenin.unbunker.UnBunkerApplication;
 import be.simongenin.unbunker.classes.Presale;
 import be.simongenin.unbunker.classes.User;
 
@@ -28,6 +27,7 @@ public class BuyPresaleDetailsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_buy_presale_details);
 
         // Get the intent
@@ -39,9 +39,16 @@ public class BuyPresaleDetailsActivity extends Activity {
         TextView sellerNameText = (TextView) findViewById(R.id.seller_name);
         sellerNameText.setText(seller.getNickname() + " " + seller.getName());
 
+        setProgressBarIndeterminateVisibility(true);
         Presale presaleExistCheck = Presale.getOnePresaleByIdFromDataBase(pre.getId());
+        setProgressBarIndeterminateVisibility(false);
+
+
+
         if (presaleExistCheck == null) {
+            setProgressBarIndeterminateVisibility(true);
             Presale.fillPresalesListFromDataBase();
+            setProgressBarIndeterminateVisibility(false);
             unexistingPresaleDialog();
         } else {
 
@@ -85,11 +92,14 @@ public class BuyPresaleDetailsActivity extends Activity {
                     Thread t = new Thread(new Runnable() {
                         @Override
                         public void run() {
+
                             error = DataBase.deletePresale(pre.getId(), seekBarPresale.getProgress());
+
 
                         }
                     });
 
+                    setProgressBarIndeterminateVisibility(true);
                     t.start();
 
                     try {
@@ -97,6 +107,10 @@ public class BuyPresaleDetailsActivity extends Activity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+
+                    setProgressBarIndeterminateVisibility(false);
+
+
 
                     if (error > 0) {
 
@@ -113,7 +127,7 @@ public class BuyPresaleDetailsActivity extends Activity {
                                 }
                             });
                             AlertDialog dialog = builder.create();
-                        dialog.show();
+                            dialog.show();
 
 
                     } else if (error == 0) {
@@ -193,17 +207,7 @@ public class BuyPresaleDetailsActivity extends Activity {
 
     }
 
-    /*
-       TODO
-       Ne fonctionne pas
-    */
-    private void sendSMS(User seller, int num) {
-        String generatedMessage = "Message généré et envoyé par l'application UnBunker. Ce numéro ("+ UnBunkerApplication.user.getGsm()+") à acheté " + num + " prévente(s). Il devrait rentrer en contact avec vous. Sinon, n'hésiter pas à le faire, votre prévente n'étant maintenant plus en ligne.";
-        SmsManager sm = SmsManager.getDefault();
-        String number = seller.getGsm();
-        String msg = generatedMessage;
-        sm.sendTextMessage(number, null, msg, null, null);
-    }
+
 
     private void unexistingPresaleDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

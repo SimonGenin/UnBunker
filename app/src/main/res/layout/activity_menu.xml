@@ -26,8 +26,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/logo"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             />
 
         <LinearLayout
@@ -59,24 +60,27 @@
                 android:textSize="18sp"
                 android:layout_marginTop="-10dp"
                 android:gravity="right"
+                android:layout_marginRight="3dp"
 
                 />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ALPHA DEV"
+                android:id="@+id/version"
+                android:gravity="right"
+                android:textColor="@color/light_red"
+                android:textStyle="bold"
+                android:layout_marginRight="3dp"
+                android:textSize="10sp"
+                />
+
         </LinearLayout>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ALPHA DEV"
-        android:id="@+id/version"
-        android:layout_below="@+id/v_layout"
-        android:layout_alignRight="@+id/v_layout"
-        android:layout_alignEnd="@+id/v_layout"
-        android:textColor="@color/light_red"
-        android:textStyle="bold"
-        android:textSize="10sp"
-        />
+
 
 
 
@@ -132,30 +136,28 @@
 
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="\?"
-        android:id="@+id/question_txtView"
-        android:textSize="30dp"
-        android:background="@drawable/question_bg"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\?"
+            android:id="@+id/question_txtView"
+            android:textSize="30dp"
+            android:background="@drawable/question_bg"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
 
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+            android:layout_below="@id/contact_button"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="25dp"
 
-
-        android:padding="15dp"
-        android:minWidth="60dp"
-
-
-        />
-
+            android:padding="15dp"
+            android:minWidth="60dp"            />
 
 
 
 </RelativeLayout>
+
+
 
    </ScrollView>

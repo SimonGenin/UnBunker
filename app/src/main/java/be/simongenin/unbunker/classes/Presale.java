@@ -51,14 +51,30 @@ public class Presale implements Serializable {
         ArrayList<Presale> unsoldPresales = new ArrayList<Presale>();
 
         for (Presale pre : presales) {
-
             if(pre.getPresaleLeftNumber() > 0) {
                 unsoldPresales.add(pre);
             }
-
         }
 
         return unsoldPresales;
+
+    }
+
+    // Recupere non vendue + venant du prochain bunker
+    public static ArrayList<Presale> getRightPresales() {
+
+        Bunker nextBunker = Bunker.getNextBunker();
+
+        ArrayList<Presale> unsoldPresales = getNotSoldPresales();
+        ArrayList<Presale> rightPresales = new ArrayList<Presale>();
+
+        for (Presale pre : unsoldPresales) {
+            if (pre.getBunker_id() == nextBunker.getId()) {
+                rightPresales.add(pre);
+            }
+        }
+
+        return rightPresales;
 
     }
 

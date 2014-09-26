@@ -1,6 +1,7 @@
 package be.simongenin.unbunker.activities;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -57,8 +58,12 @@ public class MenuActivity extends Activity {
 
                     if (isItTimeYet()) {
 
+                        ProgressDialog pd = new ProgressDialog(MenuActivity.this);
+                        pd.setMessage("Récupération de données...");
+                        pd.show();
                         User.fillUsersListFromDataBase();
                         Presale.fillPresalesListFromDataBase();
+
                         Intent intent = new Intent(MenuActivity.this, BuyPresaleActivity.class);
                         startActivity(intent);
 
@@ -84,6 +89,9 @@ public class MenuActivity extends Activity {
                     if (isItTimeYet()) {
 
                         if (Bunker.bunkers.isEmpty()) {
+                            ProgressDialog pd = new ProgressDialog(MenuActivity.this);
+                            pd.setMessage("Récupération de données...");
+                            pd.show();
                             Bunker.fillBunkersListFromDataBase();
                         }
 
@@ -110,6 +118,9 @@ public class MenuActivity extends Activity {
             public void onClick(View v) {
 
                 if (Bunker.bunkers.isEmpty()) {
+                    ProgressDialog pd = new ProgressDialog(MenuActivity.this);
+                    pd.setMessage("Récupération de données...");
+                    pd.show();
                     Bunker.fillBunkersListFromDataBase();
                 }
 
@@ -191,6 +202,9 @@ public class MenuActivity extends Activity {
     private boolean AreBunkersLeft() {
 
         if (Bunker.bunkers.isEmpty()) {
+            ProgressDialog pd = new ProgressDialog(MenuActivity.this);
+            pd.setMessage("Récupération de données...");
+            pd.show();
             Bunker.fillBunkersListFromDataBase();
         }
 
@@ -199,6 +213,7 @@ public class MenuActivity extends Activity {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top);
             return false;
         }
         return true;
@@ -211,6 +226,7 @@ public class MenuActivity extends Activity {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top);
             return false;
         }
 

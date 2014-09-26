@@ -19,7 +19,7 @@ public class BuyPresaleActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_presale);
 
-        PresaleAdapter adapter = new PresaleAdapter(this, Presale.getNotSoldPresales());
+        PresaleAdapter adapter = new PresaleAdapter(this, Presale.getRightPresales());
         getListView().setAdapter(adapter);
 
     }
@@ -30,8 +30,8 @@ public class BuyPresaleActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
 
         Intent intent = new Intent(this, BuyPresaleDetailsActivity.class);
-        intent.putExtra("USER", User.getUserById(Presale.getNotSoldPresales().get(position).getCompte_id()));
-        intent.putExtra("PRESALE", Presale.getNotSoldPresales().get(position));
+        intent.putExtra("USER", User.getUserById(Presale.getRightPresales().get(position).getCompte_id()));
+        intent.putExtra("PRESALE", Presale.getRightPresales().get(position));
         startActivity(intent);
 
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

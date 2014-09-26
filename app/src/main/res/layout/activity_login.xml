@@ -1,9 +1,9 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
 <RelativeLayout
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,8 +14,9 @@
     tools:context="be.simongenin.unbunker.activities.LoginActivity"
 
     android:background="@color/dark_blue"
-
     >
+
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -30,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/logo"
             android:layout_marginRight="5dp"
             />
 
@@ -63,6 +64,8 @@
                 android:textSize="18sp"
                 android:layout_marginTop="-10dp"
                 android:gravity="right"
+                android:layout_marginBottom="5sp"
+                android:layout_marginRight="3dp"
 
                 />
         </LinearLayout>
@@ -95,17 +98,53 @@
         android:layout_marginTop="15dp"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- - - OU - - -"
+        android:layout_below="@id/name_edt"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:id="@+id/or_separator"
+        android:textColor="#1e2b3a"
+        />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gsm_edt"
+        android:layout_below="@+id/or_separator"
+        android:layout_centerHorizontal="true"
+        android:hint="Numéro de gsm"
+        android:inputType="number"
+        android:textColorHint="@color/light_grey"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _"
+        android:layout_below="@id/gsm_edt"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:id="@+id/separator"
+        android:textColor="#1e2b3a"
+        />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mdp_edt"
-        android:layout_below="@+id/name_edt"
+        android:layout_below="@+id/separator"
         android:layout_centerHorizontal="true"
         android:hint="Mot de passe"
         android:inputType="textPassword"
         android:textColorHint="@color/light_grey"
         android:textColor="@color/white"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         />
 
 
@@ -136,18 +175,21 @@
 
         />
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Créé par Simon Genin"
         android:id="@+id/copyright"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/signup_text"
+        android:layout_marginTop="35dp"
         android:textStyle="italic"
         android:textColor="@color/light_grey"
         />
 
 
+
 </RelativeLayout>
 
- </ScrollView>
+    </ScrollView>

@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
+import android.view.Menu;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,11 +26,13 @@ public class LoginActivity extends Activity {
     private EditText nicknameEDT;
     private EditText nameEDT;
     private EditText passwordEDT;
+    private EditText gsmEDT;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_login);
 
         if (checkSharedPrefs()) {
@@ -51,7 +55,9 @@ public class LoginActivity extends Activity {
         nicknameEDT = (EditText) findViewById(R.id.nickname_edt);
         nameEDT = (EditText) findViewById(R.id.name_edt);
         passwordEDT = (EditText) findViewById(R.id.mdp_edt);
+        gsmEDT = (EditText) findViewById(R.id.gsm_edt);
         Button loginButton = (Button) findViewById(R.id.login_button);
+
 
         passwordEDT.setTypeface(Typeface.DEFAULT);
         passwordEDT.setTransformationMethod(new PasswordTransformationMethod());
@@ -67,11 +73,12 @@ public class LoginActivity extends Activity {
                 String nickname = nicknameEDT.getText().toString().trim();
                 String name = nameEDT.getText().toString().trim();
                 String password = passwordEDT.getText().toString().trim();
+                String gsm = gsmEDT.getText().toString().trim();
 
                 // check si les champs ne sont pas vides
-                if (checkFields(nickname, name, password)) {
+                if (checkFields(nickname, name, password, gsm)) {
                     // check la bd si il existe
-                    if (checkConnection(nickname, name, password)) {
+                    if (checkConnection(nickname, name, password, gsm)) {
 
                         storeSharedPrefs(UnBunkerApplication.user);
 
@@ -139,11 +146,14 @@ public class LoginActivity extends Activity {
 
     }
 
-    private boolean checkConnection(String nkn, String n, String p) {
+    private boolean checkConnection(String nkn, String n, String p, String gsm) {
+
+        setProgressBarIndeterminateVisibility(true);
 
         User.fillUsersListFromDataBase();
-
         p = Encryption.encryptPassword(p);
+
+        setProgressBarIndeterminateVisibility(false);
 
         // Si erreur pendant le cryptage
         if (p == null) {
@@ -151,16 +161,51 @@ public class LoginActivity extends Activity {
             return false;
         }
 
-        for (User user : User.users) {
-            if (user.getNickname().equals(nkn) && user.getName().equals(n) && user.getPassword().equals(p)) {
-                UnBunkerApplication.user = user;
-                UnBunkerApplication.user.connect();
-                return true;
-            }
-        }
+        nkn = nkn.toLowerCase();
+        n = n.toLowerCase();
 
+        for (User user : User.users) {
+
+            String user_nkn = user.getNickname().toLowerCase();
+            String user_n = user.getName().toLowerCase();
+
+            // On check avec le nom et prenom (inssanssible a la casse)
+            if (user_nkn.equals(nkn) && user_n.equals(n) && user.getPassword().equals(p)) {
+                if (user.getEtat() == 1) {
+                    UnBunkerApplication.user = user;
+                    UnBunkerApplication.user.connect();
+                    return true;
+                } else {
+                    notActiveAccount();
+                    return false;
+                }
+            }
+
+            // On check avec le num de gsm
+            String user_gsm = user.getGsm();
+            if (user_gsm.equals(gsm) && user.getPassword().equals(p)) {
+                if (user.getEtat() == 1) {
+                    UnBunkerApplication.user = user;
+                    UnBunkerApplication.user.connect();
+                    return true;
+                } else {
+                    notActiveAccount();
+                    return false;
+                }
+            }
+
+        }
         return false;
 
+    }
+
+    private void notActiveAccount() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Compte innactif");
+        builder.setMessage("Vous n'avez pas encore activé votre compte a l'aide de la vérification sms. Veuillez vous rendre sur le site afin de procéder à cette dernière étape.");
+        builder.setPositiveButton(android.R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void encryptionError() {
@@ -175,20 +220,36 @@ public class LoginActivity extends Activity {
     /*
         Check si des champs sont vides
      */
-    private boolean checkFields(String nkn, String n, String p) {
+    private boolean checkFields(String nkn, String n, String p, String gsm) {
 
-        if (nkn.isEmpty() || n.isEmpty() || p.isEmpty()) {
+        if (p.isEmpty()) {
             showDialogEmptyFields();
             return false;
+        }
+
+        if (nkn.isEmpty() && n.isEmpty()) {
+            if (gsm.isEmpty()) {
+                showDialogEmptyFields();
+                return false;
+            }
+        }
+
+        if (gsm.isEmpty()) {
+            if (nkn.isEmpty() || n.isEmpty()) {
+                showDialogEmptyFields();
+                return false;
+            }
         }
 
         return true;
     }
 
+
+
     private void showDialogEmptyFields() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Impossible de se connecter");
-        builder.setMessage("Tous les champs doivent être remplis.");
+        builder.setTitle("Champs manquant !");
+        builder.setMessage("Le prénom, nom et mot de passe ou le gsm et mot de passe doivent au moins être rentré");
         builder.setPositiveButton(android.R.string.ok, null);
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -201,6 +262,13 @@ public class LoginActivity extends Activity {
         builder.setPositiveButton(android.R.string.ok, null);
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.sold, menu);
+        return true;
     }
 
 }

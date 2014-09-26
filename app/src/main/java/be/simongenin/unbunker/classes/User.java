@@ -101,8 +101,8 @@ public class User implements Serializable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
 
+    }
     private static void fillUsers(JSONArray jsr) {
 
         if (jsr == null) {
@@ -237,5 +237,6 @@ public class User implements Serializable {
     public int getRole() {
         return role;
     }
+
 
 }
