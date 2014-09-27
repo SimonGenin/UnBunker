@@ -26,5 +26,8 @@
     <string name="title_activity_sent">SentActivity</string>
     <string name="title_activity_wait_for_time">WaitForTime</string>
     <string name="title_activity_no_more_bunkers">NoMoreBunkersActivity</string>
+    <string name="title_activity_history">Historique des transactions</string>
+    <string name="title_activity_sales_history">Historiques des ventes</string>
+    <string name="title_activity_buying_history">Historique des achats</string>
 
 </resources>

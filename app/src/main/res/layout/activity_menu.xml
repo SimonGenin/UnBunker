@@ -121,7 +121,14 @@
         android:layout_below="@+id/bunkers_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"/>
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Historique"
+        android:id="@+id/history_button"
+        android:layout_below="@+id/contact_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
 
 
     <TextView
@@ -130,7 +137,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="{{ Prénom }} est connecté"
         android:id="@+id/user_name"
-        android:layout_below="@+id/contact_button"
+        android:layout_below="@+id/history_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"/>
 
@@ -147,13 +154,14 @@
             android:textColor="@color/white"
             android:textStyle="bold"
 
-            android:layout_below="@id/contact_button"
+            android:layout_below="@id/history_button"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
 
             android:padding="15dp"
-            android:minWidth="60dp"            />
+            android:minWidth="60dp"
 
+        />
 
 
 </RelativeLayout>

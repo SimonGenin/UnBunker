@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
-import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -264,11 +263,6 @@ public class LoginActivity extends Activity {
         dialog.show();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.sold, menu);
-        return true;
-    }
+
 
 }

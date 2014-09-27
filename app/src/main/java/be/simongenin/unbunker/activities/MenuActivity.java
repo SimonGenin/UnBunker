@@ -145,6 +145,27 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        /*
+            Historique
+         */
+        Button historyButton = (Button) findViewById(R.id.history_button);
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                User.fillUsersListFromDataBase();
+                // TODO retirer car test
+                UnBunkerApplication.user.fillHistoryForTest();
+
+                Intent intent = new Intent(MenuActivity.this, HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
     }
 
 

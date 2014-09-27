@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Prévente(s) en vente"
-        android:id="@+id/textView"
+        android:id="@+id/history_buying_txt"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"
@@ -26,7 +26,7 @@
         android:id="@+id/imageView"
         android:layout_marginBottom="32dp"
         android:src="@drawable/coins"
-        android:layout_above="@+id/textView"
+        android:layout_above="@+id/history_buying_txt"
         android:layout_centerHorizontal="true"/>
 
     <Button

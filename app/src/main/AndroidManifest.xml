@@ -23,8 +23,7 @@
         <activity
             android:name=".activities.LoginActivity"
             android:label="Connexion"
-            android:theme="@style/Theme.Unbunker.NoActionBar"
-             >
+            android:theme="@style/Theme.Unbunker.NoActionBar" >
         </activity>
         <activity
             android:name=".activities.BunkersActivity"
@@ -145,12 +144,36 @@
         <activity
             android:name=".activities.WaitForTimeActivity"
             android:label="@string/title_activity_wait_for_time"
-            android:theme="@style/Theme.Unbunker.NoActionBar">
+            android:theme="@style/Theme.Unbunker.NoActionBar" >
         </activity>
         <activity
             android:name=".activities.NoMoreBunkersActivity"
             android:label="@string/title_activity_no_more_bunkers"
-            android:theme="@style/Theme.Unbunker.NoActionBar">
+            android:theme="@style/Theme.Unbunker.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".activities.HistoryActivity"
+            android:label="@string/title_activity_history"
+            android:parentActivityName=".activities.MenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SalesHistoryActivity"
+            android:label="@string/title_activity_sales_history"
+            android:parentActivityName=".activities.HistoryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.HistoryActivity" />
+        </activity>
+        <activity
+            android:name=".activities.BuyingHistoryActivity"
+            android:label="@string/title_activity_buying_history"
+            android:parentActivityName=".activities.HistoryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="be.simongenin.unbunker.activities.HistoryActivity" />
         </activity>
     </application>
 

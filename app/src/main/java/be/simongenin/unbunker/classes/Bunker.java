@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import be.simongenin.unbunker.DataBase;
@@ -53,6 +54,10 @@ public class Bunker {
 
         for (Bunker bunker : bunkers) {
             Date bunkerDate = DateHandler.fromSringDateYMDToDate(bunker.getDate());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(bunkerDate);
+            cal.add(Calendar.HOUR_OF_DAY, 25);
+            bunkerDate = cal.getTime();
 
             if (!now.after(bunkerDate)) {
                 return bunker;

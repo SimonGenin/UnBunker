@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Achat de préventes"
-        android:id="@+id/textView"
+        android:id="@+id/history_buying_txt"
         android:layout_below="@+id/imageView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:text="Pour acheter une prévente, cliquez sur 'Acheter une prévente' dans le menu. Une fois fait, vous devriez voir une liste de toutes les préventes actuellement disponible. Sachez que cette liste est rafraichie lors du passage entre le menu et cette liste. Si vous restez longtemps sur la page sans rien faire, il se peut que lorsque vous tenterez de cliquer sur l'une d'elle, vous aurez un message vous annonçant qu'elle à déjà été vendue. Chaque élément de cette liste contient soit 3 ou soit 4 informations. Le nom du vendeur, le temps depuis lequel la prévente à été mise en ligne et le nombre de préventes en vente. Il peut arriver que un petit carré de couleur indique que la personne est soit un administrateur, un développeur ou plus souvent un utilisateur prioritaire (voir plus bas pour informations). Si vous cliquez sur l'une des préventes, vous verrez apparaitre les détails de votre achat/réservation. Vous devrez simplement indiquer le nombre de prévente à acheter. Il se peut en effet que vous en preniez pour vos amis en même temps. SOYEZ SUR DE CE QUE VOUS FAITES ! Une fois le bouton acheter cliqué, la prévente à été achetée, vous ne pouvez plus annuler. Vous êtes donc redirigé vers un envoi de sms avec le numéro du vendeur rentré comme destinataire. Vous n'avez plus qu'à arranger un échange en étant sur que vous possédez vos prévente. Si vous n'envoyez pas de sms alors que vous avez acheté des préventes, vous vous présentez au risque d'être banni. Si vous faite un achat accidentel, pensez donc à prévenir le vendeur de votre erreur à la place d'organiser l'échange afin que cette personne puisse les remettre en vente."
         android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/history_buying_txt"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 

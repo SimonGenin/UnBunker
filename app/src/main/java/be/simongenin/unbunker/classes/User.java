@@ -33,6 +33,11 @@ public class User implements Serializable {
     private int etat;
     private int role;
 
+
+
+    private ArrayList<History> histories;
+
+
     public User() {
         connected = false;
     }
@@ -47,6 +52,20 @@ public class User implements Serializable {
         this.date = date;
         this.etat = etat;
         this.role = role;
+
+
+    }
+
+    // TODO Enlever ca, juste ici pour tester l'historique
+    public void fillHistoryForTest() {
+        histories = new ArrayList<History>();
+        histories.add(new History(History.TYPE_BUYING, 152, "2014-09-15", 3));
+        histories.add(new History(History.TYPE_BUYING, 131, "2014-10-01", 1));
+        histories.add(new History(History.TYPE_BUYING, 99, "2014-10-3", 1));
+        histories.add(new History(History.TYPE_BUYING, 23, "2014-10-19", 3));
+
+        histories.add(new History(History.TYPE_SALE, 69, "2014-10-23", 4));
+        histories.add(new History(History.TYPE_SALE, 14, "2014-10-23", 1));
     }
 
     public static User getUserById(int id) {
@@ -162,7 +181,6 @@ public class User implements Serializable {
 
         // Shared preferences
 
-
         connected = false;
     }
 
@@ -238,5 +256,8 @@ public class User implements Serializable {
         return role;
     }
 
+    public ArrayList<History> getHistories() {
+        return histories;
+    }
 
 }
